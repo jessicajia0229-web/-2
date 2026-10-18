@@ -1,0 +1,1351 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>工程圖學考點網</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* Layout: a drafting sheet — title-block header, ruled folders, a gridded canvas for keywords. */
+:root{
+  --paper:#EEF1EE; --sheet:#FBFCFA; --sheet2:#F3F5F2; --ink:#1B2227; --ink2:#5A666E; --rule:#C9D1D2; --grid:#DCE3E2;
+  --blue:#1F58A6; --blue-soft:#E3ECF8; --red:#C2362B; --red-soft:#F8E4E1; --green:#2C7A4B; --green-soft:#E1F1E7; --amber:#A86A12; --amber-soft:#F7EBD5;
+  --g-A:#1F58A6; --g-B:#7A4FB0; --g-C:#0F7C80; --g-D:#B0482D; --g-E:#5E7A12;
+  --shadow:0 1px 0 rgba(20,30,40,.06),0 6px 18px -10px rgba(20,30,40,.25);
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --f-num:"Barlow Condensed","Noto Sans TC",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:6px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#101519; --sheet:#171E23; --sheet2:#1D252B; --ink:#E2E8EA; --ink2:#97A4AB; --rule:#2F3A41; --grid:#232D33;
+  --blue:#78A9EA; --blue-soft:#1C2D44; --red:#EE7B70; --red-soft:#3A2220; --green:#6CC38E; --green-soft:#1A3326; --amber:#E2A74E; --amber-soft:#3A2D16;
+  --g-A:#78A9EA; --g-B:#B497E0; --g-C:#5CC4C7; --g-D:#EB8C6E; --g-E:#A9C65A;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 8px 22px -12px rgba(0,0,0,.7); color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#101519; --sheet:#171E23; --sheet2:#1D252B; --ink:#E2E8EA; --ink2:#97A4AB; --rule:#2F3A41; --grid:#232D33;
+  --blue:#78A9EA; --blue-soft:#1C2D44; --red:#EE7B70; --red-soft:#3A2220; --green:#6CC38E; --green-soft:#1A3326; --amber:#E2A74E; --amber-soft:#3A2D16;
+  --g-A:#78A9EA; --g-B:#B497E0; --g-C:#5CC4C7; --g-D:#EB8C6E; --g-E:#A9C65A;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 8px 22px -12px rgba(0,0,0,.7); color-scheme:dark }
+html,body{height:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.3}
+.app{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:14px 48px}
+
+/* Title block header */
+.tb{display:grid;grid-template-columns:auto 1fr auto;border:1.5px solid var(--ink);background:var(--sheet);margin-bottom:18px}
+.tb>div{padding:8px 12px;border-right:1px solid var(--ink);min-width:0}
+.tb>div:last-child{border-right:0}
+.tb .lbl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink2);text-transform:uppercase;display:block;line-height:1.2}
+.tb .course{font-family:var(--f-num);font-weight:700;font-size:20px;letter-spacing:.02em}
+.tb .name{font-weight:700;font-size:19px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tb .exam{text-align:right}
+.tb .exam b{font-family:var(--f-num);font-size:20px;font-weight:700;color:var(--red)}
+.tb .exam small{color:var(--ink2);font-size:12px;display:block;line-height:1.3}
+.crumbs{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin:-6px 0 14px}
+.crumbs button{background:none;border:0;padding:2px 4px;color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+.backbtn{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--rule);background:var(--sheet);border-radius:var(--r);padding:3px 10px;color:var(--ink)!important;text-decoration:none!important}
+.sync{font-family:var(--f-mono);font-size:11px;color:var(--ink2);margin-top:2px}
+@media (max-width:640px){.tb{grid-template-columns:1fr auto}.tb>div:first-child{display:none}.tb .name{font-size:16px}}
+
+/* Section heads */
+.sh{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:22px 0 10px;flex-wrap:wrap}
+.sh h2{font-size:17px;font-weight:700;display:flex;align-items:baseline;gap:10px}
+.sh h2 .no{font-family:var(--f-mono);font-size:12px;color:var(--ink2);font-weight:400;letter-spacing:.06em}
+.sh .note{font-size:12.5px;color:var(--ink2)}
+
+/* Home: keyword entrance */
+.kwentry{display:grid;grid-template-columns:1.2fr 1fr;border:1.5px solid var(--ink);background:var(--sheet);text-align:left;padding:0;width:100%;overflow:hidden}
+.kwentry .t{padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.kwentry .t h3{font-size:22px}
+.kwentry .t p{margin:0;color:var(--ink2);font-size:13.5px}
+.kwentry .go{margin-top:6px;font-weight:700;color:var(--blue)}
+.kwentry .pv{position:relative;border-left:1px solid var(--rule);background-color:var(--sheet2);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:18px 18px;min-height:130px}
+.kwentry .pv span{position:absolute;font-size:13px;padding:2px 8px;border:1px solid var(--rule);background:var(--sheet);border-radius:3px;white-space:nowrap}
+.kwentry:hover{box-shadow:var(--shadow)}
+@media (max-width:640px){.kwentry{grid-template-columns:1fr}.kwentry .pv{border-left:0;border-top:1px solid var(--rule);min-height:90px}}
+
+/* Folder cards */
+.folders{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.fcard{position:relative;text-align:left;background:var(--sheet);border:1px solid var(--rule);border-radius:2px 10px 2px 2px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.fcard::before{content:"";position:absolute;left:-1px;top:-9px;width:42%;height:9px;background:var(--sheet);border:1px solid var(--rule);border-bottom:0;border-radius:6px 6px 0 0}
+.fcard:hover{box-shadow:var(--shadow);border-color:var(--ink2)}
+.fcard .code{font-family:var(--f-num);font-weight:700;font-size:28px;line-height:1;color:var(--gc)}
+.fcard .nm{font-weight:700;font-size:17px}
+.fcard .lec{font-family:var(--f-mono);font-size:11.5px;color:var(--ink2)}
+.fcard .row{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12.5px;color:var(--ink2)}
+.bar{height:5px;background:var(--grid);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--gc,var(--blue))}
+.stars{font-family:var(--f-num);font-weight:600;font-size:15px;color:var(--amber);letter-spacing:.02em;white-space:nowrap}
+.mk{display:inline-flex;gap:6px;font-family:var(--f-mono);font-size:11px}
+.mk span{padding:0 5px;border-radius:3px}
+.mk .m{background:var(--green-soft);color:var(--green)}.mk .r{background:var(--amber-soft);color:var(--amber)}.mk .w{background:var(--red-soft);color:var(--red)}
+
+/* Folder view */
+.fhead{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap;border-bottom:1.5px solid var(--ink);padding-bottom:12px}
+.fhead .code{font-family:var(--f-num);font-weight:700;font-size:48px;line-height:.9;color:var(--gc)}
+.fhead h1{font-size:24px}
+.fhead .lec{font-family:var(--f-mono);font-size:12px;color:var(--ink2)}
+.mastery{display:grid;grid-template-columns:auto repeat(3,1fr);gap:0;border:1px solid var(--rule);background:var(--sheet);margin-top:16px}
+.mastery .lab{padding:12px 14px;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:0}
+.mastery .lab b{font-size:14.5px}
+.mastery .lab small{color:var(--ink2);font-size:12px}
+.mtile{border:0;border-right:1px solid var(--rule);background:none;padding:12px 14px;text-align:left;display:flex;flex-direction:column;gap:2px;min-width:0}
+.mtile:last-child{border-right:0}
+.mtile:hover{background:var(--sheet2)}
+.mtile .n{font-family:var(--f-num);font-size:28px;font-weight:700;line-height:1}
+.mtile .t{font-size:13px;font-weight:500}
+.mtile .s{font-size:11.5px;color:var(--ink2)}
+.mtile.m .n{color:var(--green)}.mtile.r .n{color:var(--amber)}.mtile.w .n{color:var(--red)}
+@media (max-width:640px){.mastery{grid-template-columns:repeat(3,1fr)}.mastery .lab{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--rule)}}
+.subs{display:flex;flex-direction:column;border:1px solid var(--rule);background:var(--sheet)}
+.srow{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;padding:12px 14px;border:0;border-bottom:1px solid var(--rule);background:none;text-align:left;width:100%}
+.srow:last-child{border-bottom:0}
+.srow:hover{background:var(--sheet2)}
+.srow .ix{font-family:var(--f-mono);font-size:12px;color:var(--ink2)}
+.srow .tt{font-weight:500;font-size:15px;min-width:0}
+.srow .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:3px}
+.srow .rt{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.lv{font-size:11px;padding:0 6px;border:1px solid var(--rule);border-radius:3px;color:var(--ink2)}
+.st{font-size:11.5px;font-family:var(--f-mono);padding:1px 7px;border-radius:10px;white-space:nowrap}
+.st.un{background:var(--sheet2);color:var(--ink2);border:1px solid var(--rule)}
+.st.ing{background:var(--blue-soft);color:var(--blue)}
+.st.ok{background:var(--green-soft);color:var(--green)}
+.sortnote{font-size:12px;color:var(--ink2);display:flex;align-items:center;gap:6px}
+
+/* Sub view */
+.subhead{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;flex-wrap:wrap;border-bottom:1.5px solid var(--ink);padding-bottom:12px}
+.subhead h1{font-size:22px}
+.subhead .k{font-family:var(--f-mono);font-size:12px;color:var(--ink2)}
+.btn{border:1px solid var(--rule);background:var(--sheet);border-radius:var(--r);padding:6px 12px;font-size:13.5px;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--ink2)}
+.btn.pri{background:var(--blue);border-color:var(--blue);color:var(--sheet)}
+.btn.ok{background:var(--green-soft);border-color:var(--green);color:var(--green)}
+.btn.ai{border-color:var(--blue);color:var(--blue);background:var(--blue-soft)}
+.btn:disabled{opacity:.5;cursor:default}
+.tabs{display:flex;gap:0;margin:16px 0 14px;border-bottom:1px solid var(--rule);overflow-x:auto}
+.tab{background:none;border:0;border-bottom:2.5px solid transparent;padding:8px 14px;font-size:14.5px;color:var(--ink2);white-space:nowrap;display:flex;gap:6px;align-items:baseline}
+.tab .c{font-family:var(--f-mono);font-size:11px}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink);font-weight:700}
+
+/* Flashcards */
+.fc-wrap{display:flex;flex-direction:column;gap:12px;max-width:720px}
+.fc{perspective:1200px;border:0;background:none;padding:0;width:100%;text-align:left}
+.fc-in{position:relative;min-height:220px;transition:transform .45s ease;transform-style:preserve-3d;display:grid}
+.fc.flip .fc-in{transform:rotateY(180deg)}
+.fc-face{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--sheet);border:1px solid var(--rule);padding:22px 24px 34px;display:flex;flex-direction:column;justify-content:center;gap:10px;box-shadow:var(--shadow)}
+.fc-face.back{transform:rotateY(180deg);background:var(--sheet2)}
+.fc-face .side{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--ink2);text-transform:uppercase}
+.fc-face .q{font-size:19px;font-weight:700}
+.fc-face .a{font-size:16px;line-height:1.75}
+.fc-face .hint{position:absolute;bottom:10px;right:14px;font-size:11.5px;color:var(--ink2)}
+.hot{display:inline-block;font-size:11px;font-weight:700;color:var(--red);border:1px solid var(--red);border-radius:3px;padding:0 5px;letter-spacing:.05em;vertical-align:middle}
+.fc-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.fc-count{font-family:var(--f-num);font-size:18px;font-weight:600}
+.marks{display:flex;gap:8px;flex-wrap:wrap}
+.markbtn{border:1px solid var(--rule);background:var(--sheet);border-radius:var(--r);padding:6px 12px;font-size:13.5px;display:inline-flex;gap:6px;align-items:center}
+.markbtn .s{color:var(--amber);font-size:12px;letter-spacing:-1px}
+.markbtn.m[aria-pressed="true"]{background:var(--green-soft);border-color:var(--green);color:var(--green)}
+.markbtn.r[aria-pressed="true"]{background:var(--amber-soft);border-color:var(--amber);color:var(--amber)}
+.markbtn.w[aria-pressed="true"]{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+.dots{display:flex;gap:6px;flex-wrap:wrap}
+.dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--rule);background:var(--sheet);font-family:var(--f-mono);font-size:10px;display:grid;place-items:center;padding:0;color:var(--ink2)}
+.dot.cur{border-color:var(--ink);color:var(--ink)}
+.dot.m{background:var(--green);border-color:var(--green);color:var(--sheet)}
+.dot.r{background:var(--amber);border-color:var(--amber);color:var(--sheet)}
+.dot.w{background:var(--red);border-color:var(--red);color:var(--sheet)}
+.dot.seen:not(.m):not(.r):not(.w){background:var(--grid)}
+
+/* Example & quiz items */
+.items{display:flex;flex-direction:column;gap:14px;max-width:820px}
+.item{background:var(--sheet);border:1px solid var(--rule);padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.item .src{font-family:var(--f-mono);font-size:11.5px;color:var(--ink2);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.item .q{font-weight:700;font-size:16px}
+.ans{border-left:3px solid var(--blue);padding:8px 12px;background:var(--blue-soft);display:flex;flex-direction:column;gap:6px}
+.ans .lab{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--blue)}
+.exp{border-left:3px solid var(--rule);padding:6px 12px;color:var(--ink);font-size:14.5px}
+.acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{border:1px solid var(--rule);background:var(--sheet);border-radius:var(--r);padding:8px 12px;text-align:left;display:flex;gap:10px;align-items:baseline}
+.opt .l{font-family:var(--f-mono);font-size:12px;color:var(--ink2)}
+.opt:hover:not(:disabled){border-color:var(--ink2)}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--green);background:var(--green-soft)}
+.opt.wrong{border-color:var(--red);background:var(--red-soft)}
+.verdict{font-weight:700}
+.verdict.ok{color:var(--green)}.verdict.no{color:var(--red)}
+.score{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:13.5px;color:var(--ink2)}
+.score b{font-family:var(--f-num);font-size:22px;color:var(--ink)}
+.fig{overflow-x:auto;background:var(--sheet2);border:1px solid var(--rule);padding:8px}
+.fig svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.empty{padding:26px;border:1px dashed var(--rule);color:var(--ink2);text-align:center;background:var(--sheet)}
+
+/* Mastery cards grid */
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.mcard{background:var(--sheet);border:1px solid var(--rule);padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mcard .from{font-family:var(--f-mono);font-size:11px;color:var(--ink2)}
+.mcard .q{font-weight:700}
+.mcard .a{font-size:14px;border-top:1px dashed var(--rule);padding-top:8px}
+.mcard .marks .markbtn{padding:3px 8px;font-size:12px}
+
+/* Chat */
+.chat{display:flex;flex-direction:column;background:var(--sheet);border:1px solid var(--rule);min-height:0}
+.chat .ctx{font-size:12px;color:var(--ink2);padding:8px 12px;border-bottom:1px solid var(--rule);background:var(--sheet2)}
+.chat .ctx summary{cursor:pointer}
+.chat .ctx pre{white-space:pre-wrap;font-family:var(--f-body);font-size:12px;margin:6px 0 0;max-height:160px;overflow:auto}
+.chat .log{flex:1 1 auto;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px;min-height:160px}
+.msg{max-width:90%;padding:8px 12px;border-radius:8px;font-size:14.5px;line-height:1.65;overflow-wrap:anywhere}
+.msg.u{align-self:flex-end;background:var(--blue);color:var(--sheet)}
+.msg.a{align-self:flex-start;background:var(--sheet2);border:1px solid var(--rule)}
+.msg.a p{margin:0 0 6px}.msg.a p:last-child{margin:0}
+.msg.a ul{margin:4px 0;padding-left:20px}
+.msg.sys{align-self:center;font-size:12.5px;color:var(--ink2);background:none;text-align:center}
+.chips{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 8px}
+.chip{border:1px solid var(--rule);background:var(--sheet);border-radius:14px;padding:2px 10px;font-size:12.5px}
+.chat form{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--rule)}
+.chat textarea{flex:1;resize:none;border:1px solid var(--rule);border-radius:var(--r);padding:7px 10px;font:inherit;font-size:14.5px;background:var(--paper);color:var(--ink);min-height:40px;max-height:120px}
+.drawer{position:fixed;z-index:50;right:0;top:0;bottom:0;width:min(440px,100%);display:flex;flex-direction:column;background:var(--sheet);border-left:1.5px solid var(--ink);box-shadow:-10px 0 30px -12px rgba(0,0,0,.35);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.drawer .dh{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid var(--rule)}
+.drawer .dh b{font-size:15px}
+.drawer .chat{flex:1;border:0}
+.scrim{position:fixed;inset:0;background:rgba(10,15,20,.35);z-index:40}
+@media (max-width:640px){.drawer{top:auto;height:82%;width:100%;border-left:0;border-top:1.5px solid var(--ink);border-radius:12px 12px 0 0}}
+.inlinechat{height:480px}
+
+/* Keyword studio */
+.kw{display:flex;flex-direction:column;gap:0;height:calc(100vh - 150px);height:calc(100dvh - 150px);min-height:520px;border:1.5px solid var(--ink);background:var(--sheet)}
+.tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:8px 10px;border-bottom:1px solid var(--rule);background:var(--sheet)}
+.tools .sep{width:1px;height:22px;background:var(--rule);margin:0 4px}
+.tool{border:1px solid var(--rule);background:var(--sheet);border-radius:var(--r);padding:4px 10px;font-size:13px}
+.tool[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
+.sw{width:24px;height:24px;border-radius:50%;border:2px solid var(--sheet);box-shadow:0 0 0 1px var(--rule);padding:0}
+.sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--ink)}
+.wd{width:28px;height:24px;border:1px solid var(--rule);background:var(--sheet);border-radius:var(--r);display:grid;place-items:center;padding:0}
+.wd i{display:block;width:14px;background:var(--ink);border-radius:2px}
+.wd[aria-pressed="true"]{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.board{position:relative;flex:1 1 56%;min-height:220px;overflow:hidden;background-color:var(--sheet);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;touch-action:none}
+.board canvas{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+.board.draw canvas{pointer-events:auto;cursor:crosshair}
+.board .hintb{position:absolute;inset:0;display:grid;place-items:center;color:var(--ink2);font-size:14px;pointer-events:none;text-align:center;padding:16px}
+.kchip{position:absolute;z-index:2;left:0;top:0;transform-origin:center;padding:4px 12px 4px 10px;background:var(--sheet);border:1.5px solid var(--gc);border-left-width:5px;border-radius:3px;font-weight:700;font-size:16px;white-space:nowrap;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none;box-shadow:var(--shadow)}
+.kchip.sel{outline:2px dashed var(--blue);outline-offset:3px}
+.kchip .hd{position:absolute;right:-9px;bottom:-9px;width:16px;height:16px;border-radius:50%;background:var(--blue);border:2px solid var(--sheet);cursor:nwse-resize;display:none;touch-action:none}
+.kchip.sel .hd{display:block}
+.selbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:7px 10px;border-top:1px solid var(--rule);background:var(--sheet2);font-size:13.5px;min-height:44px}
+.selbar .def{flex:1 1 200px;min-width:0}
+.selbar .def b{margin-right:8px}
+.kwlist{flex:1 1 44%;overflow-y:auto;border-top:1.5px solid var(--ink);background:var(--sheet2);-webkit-overflow-scrolling:touch}
+.kwg{padding:0 12px 12px}
+.kwg h3{position:sticky;top:0;z-index:1;background:var(--sheet2);font-size:13.5px;padding:10px 0 6px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--rule);margin-bottom:8px}
+.kwg h3 i{width:10px;height:10px;border-radius:2px;background:var(--gc)}
+.kwg h3 small{font-weight:400;color:var(--ink2);font-family:var(--f-mono);font-size:11px}
+.kwgrid{display:flex;flex-wrap:wrap;gap:6px}
+.kwb{border:1px solid var(--rule);border-left:3px solid var(--gc);background:var(--sheet);border-radius:3px;padding:3px 10px;font-size:13.5px;text-align:left}
+.kwb:hover{border-color:var(--gc)}
+.kwb.on{background:var(--blue-soft)}
+.kwb.on::after{content:" ●";color:var(--blue);font-size:9px;vertical-align:middle}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--sheet);padding:7px 14px;border-radius:6px;font-size:13px;z-index:60}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--ink2);margin-top:10px}
+@media (prefers-reduced-motion:reduce){.fc-in{transition:none}}
+</style>
+<div class="app"><header id="hdr"></header><main id="view"></main></div>
+<script>
+// ===== 課程內容資料 =====
+// 檔案夾(folder) → 資料夾(sub)：cards 抽認卡 / examples 講義題目 / quiz 小測驗
+const DATA = [
+{
+  id:'A', name:'線條與工程字', lec:'09/07 線與字法', tag:'Lines & Lettering',
+  subs:[
+  { id:'A1', title:'製圖方法與線條粗細', lv:'基礎',
+    cards:[
+      {f:'工程製圖的三種方法？', b:'徒手畫（freehand sketch）、用器畫（mechanical drawing）、電腦製圖（computer drawing）。'},
+      {f:'徒手畫的用途與限制？', b:'只用手和筆在紙上繪製，常用來記錄設計構想或現場測繪；最後仍須以儀器或電腦完成正式工程圖。'},
+      {f:'線條分哪三個粗細等級？彼此比例？', b:'粗線、中線、細線。粗線 ≈ 中線 × 1.5；中線 ≈ 細線 × 2。', hot:1},
+      {f:'線條的絕對粗細有硬性規定嗎？', b:'沒有。但同一張圖中的粗、中、細線必須保持一定比例。', hot:1},
+      {f:'常用的粗／中／細線寬組合（mm）？', b:'1 / 0.7 / 0.35、0.8 / 0.6 / 0.3、0.7 / 0.5 / 0.25、0.6 / 0.4 / 0.2、0.5 / 0.35 / 0.18。'},
+      {f:'細線、中線大約是粗線的幾分之幾？', b:'細線寬約為粗線的 1/4～1/3；中線（虛線）寬約為粗線的 1/2～2/3。'}
+    ],
+    examples:[
+      {src:'講義 p.8', q:'若一張圖的粗線用 0.7 mm，依講義的粗細配合，中線與細線應各用多少？', a:'中線 0.5 mm、細線 0.25 mm。', e:'講義表格中「粗 0.7」那一欄對應「中 0.5、細 0.25」。驗算：0.5 × 1.5 ≈ 0.7（粗≈中×1.5），0.25 × 2 = 0.5（中≈細×2）。'}
+    ],
+    quiz:[
+      {q:'下列哪一組粗／中／細線寬「不符合」講義的配合表？', o:['1 / 0.7 / 0.35','0.6 / 0.4 / 0.2','0.5 / 0.35 / 0.18','0.7 / 0.35 / 0.25'], a:3, e:'0.7 粗線應配 0.5 中線、0.25 細線。0.7 / 0.35 不符合「粗≈中×1.5」。'},
+      {q:'關於線條粗細，下列敘述何者正確？', o:['CNS 規定粗線必須是 0.7 mm','中線約為細線的 2 倍','粗線約為細線的 1.5 倍','不同圖之間比例必須一致'], a:1, e:'中線 ≈ 細線 × 2，粗線 ≈ 中線 × 1.5（≈ 細線 × 3）。絕對粗細無硬性規定，要求的是同一張圖內比例一致。'},
+      {q:'設計人員在工地記錄構想最適合用哪種製圖法？', o:['用器畫','徒手畫','電腦製圖','透視投影'], a:1, e:'徒手畫用於記錄構想或現場測繪，之後再以儀器或電腦完成正式圖。'}
+    ]
+  },
+  { id:'A2', title:'線條種類與用途（A～H）', lv:'基礎',
+    cards:[
+      {f:'依形狀，線條分哪三大類？', b:'實線（Continuous line）、虛線（Short dash line）、鏈線（Chain line）。'},
+      {f:'A 粗實線的用途？', b:'可見輪廓線、圖框線。', hot:1},
+      {f:'B 細實線有哪些用途？', b:'尺度線、尺度界線、指線、剖面線、作圖線、因圓角而消失的稜線（交線）、旋轉剖面的輪廓線。', hot:1},
+      {f:'C、D 細實線（不規則／含齒形彎折）的用途？', b:'折斷線。D 型的齒形兩相對銳角約 30°，尖角高度約 2 mm。'},
+      {f:'E 虛線：粗細、畫法、用途？', b:'中線；每段約 3 mm、間隔約 1 mm；用於隱藏線（隱藏輪廓線）。', hot:1},
+      {f:'F 細鏈線：畫法與用途？', b:'線長約 20 mm、中間一點、間隔約 1 mm；用於中心線、節線、假想線。', hot:1},
+      {f:'G 粗鏈線的用途？', b:'表示需特殊處理物面（如熱處理）的範圍。'},
+      {f:'H 割面線的畫法？', b:'粗、細混合鏈線：兩端粗、中間細；兩端粗線長勿超過 10 mm；轉折處為粗實線，長約 5 mm。', hot:1}
+    ],
+    examples:[
+      {src:'講義 p.10–11', q:'尺度線、隱藏線、中心線、割面線各應使用哪一種線？', a:'尺度線：B 細實線；隱藏線：E 中虛線；中心線：F 細鏈線；割面線：H 兩端粗中間細的鏈線。', e:'這四種是最常被拿來配對的線。記法：「標尺寸用細實、看不到用虛線、對稱軸用細鏈、切開位置用割面線」。', fig:'lines'}
+    ],
+    quiz:[
+      {q:'「因圓角而消失的稜線」應以何種線表示？', o:['粗實線','細實線','虛線','細鏈線'], a:1, e:'屬於 B 細實線的用途之一。'},
+      {q:'假想線（如表示相鄰零件或移動位置）用哪種線？', o:['粗鏈線','細鏈線','虛線','細實線'], a:1, e:'F 細鏈線：中心線、節線、假想線。'},
+      {q:'表示「需特殊處理物面範圍」的線是？', o:['G 粗鏈線','F 細鏈線','H 割面線','A 粗實線'], a:0, e:'G 粗鏈線專門標出需特殊處理（如表面硬化）的範圍。'},
+      {q:'虛線每段長與間隔約為？', o:['20 mm／1 mm','3 mm／1 mm','5 mm／2 mm','10 mm／1 mm'], a:1, e:'虛線每段約 3 mm、間隔約 1 mm；20 mm 是鏈線的線長。'},
+      {q:'割面線兩端粗線的長度上限為？', o:['5 mm','10 mm','20 mm','沒有限制'], a:1, e:'兩端粗線勿超過 10 mm；轉折處粗實線約 5 mm。'}
+    ]
+  },
+  { id:'A3', title:'線的起訖與交接（8 種情況）', lv:'核心',
+    cards:[
+      {f:'CASE 1：虛線與實線或虛線「相交」時？', b:'交點接合處應維持實質相交（以線段相交，不在間隙處交叉）。', hot:1},
+      {f:'CASE 2：虛線與實線或虛線「T 形垂直相接」時？', b:'虛線開始處不留間隙，直接與線相接。', hot:1},
+      {f:'CASE 3：虛線的起迄處？', b:'起迄必須皆為線段，不可為空隙。', hot:1},
+      {f:'CASE 4：虛線與虛線「成角相接」時？', b:'頂點應相互接著（角落以線段相接成角）。', hot:1},
+      {f:'CASE 5：虛線與虛線相接時？', b:'須相接於線段部分。', hot:1},
+      {f:'CASE 6：虛線為實線的延長線時？', b:'在虛線起點前必須留約 1 mm 的空隙。這是唯一「要留空隙」的情況。', hot:1},
+      {f:'CASE 7、8：相鄰的兩平行虛線？', b:'間隙要相互錯開；若兩虛線中間有中心線，間隙要對齊。', hot:1}
+    ],
+    examples:[
+      {src:'講義 p.23–31', q:'哪一種情況虛線「必須留空隙」？為什麼？', a:'CASE 6：虛線為實線的延長線時，虛線起點前留約 1 mm 空隙。', e:'若不留空隙，讀圖者會把實線與虛線看成同一條線，分不出輪廓在哪裡結束。其他相交、相接情況則都要「以線段相接」，避免看起來像斷開。'},
+      {src:'講義 p.30–31', q:'兩條平行虛線很靠近時，間隙要對齊還是錯開？中間夾一條中心線時呢？', a:'一般要錯開；中間有中心線時要對齊。', e:'錯開可避免兩虛線的空隙排成一列，看起來像一條斷線；有中心線（對稱）時，對齊可表現兩側對稱的關係。'}
+    ],
+    quiz:[
+      {q:'虛線與實線 T 形垂直相接時，正確畫法為？', o:['虛線起點留 1 mm 空隙','虛線起點不留間隙，直接相接','以虛線的空隙接觸實線','改畫成細實線'], a:1, e:'CASE 2：T 形相接時虛線開始不留間隙。'},
+      {q:'虛線為實線的延長時，虛線起點前應？', o:['直接相連','留約 1 mm 空隙','留約 3 mm 空隙','改用鏈線'], a:1, e:'CASE 6：留約 1 mm 空隙，以區分可見與隱藏部分。'},
+      {q:'下列何者「不良」？', o:['虛線起迄皆為線段','虛線成角相接時頂點相接','兩平行虛線間隙對齊（中間無中心線）','虛線與虛線相交於線段'], a:2, e:'中間沒有中心線的平行虛線，間隙應相互錯開。'},
+      {q:'兩平行虛線之間有中心線時，間隙應？', o:['錯開','對齊','任意','只畫一條虛線'], a:1, e:'CASE 7/8：有中心線時間隙對齊。'}
+    ]
+  },
+  { id:'A4', title:'工程字（CNS 標準）', lv:'核心',
+    cards:[
+      {f:'工程字的五項要求？', b:'字跡清晰、排列整齊、大小一致、自左向右橫書、以單筆字完成。'},
+      {f:'CNS 標準工程字分哪三種？', b:'中文、拉丁字母、阿拉伯數字。'},
+      {f:'什麼是「單筆字」（one-stroke）？', b:'筆畫粗細與鉛筆／針筆粗細相等，無須頓筆等任何修飾。'},
+      {f:'中文字字體與三種字形比例？', b:'以等線體為原則。方形：字寬 = 字高；長形：字寬 = 3/4 字高；寬形：字寬 = 4/3 字高。', hot:1},
+      {f:'中文字的筆劃、字距、行距？', b:'筆劃粗細 ≈ 字高 1/15；字與字間隔 ≈ 字高 1/8；行與行間隔 ≈ 字高 1/3。', hot:1},
+      {f:'拉丁字母與阿拉伯數字的規定？', b:'分直式與斜式，斜式傾斜約 75°；筆畫粗細 ≈ 字高 1/10；線寬約為中線；行距 ≈ 字高 2/3；以大楷為主，小楷僅用於特定符號與縮寫。', hot:1},
+      {f:'建議最小字高（中文／拉丁／數字）？', b:'標題欄、件號：A0–A3 為 7/7/7；A4–A5 為 5/5/5。尺度註解：A0 為 5/3.5/3.5；A1–A5 為 3.5/2.5/2.5（mm）。'}
+    ],
+    examples:[
+      {src:'講義 p.35', q:'字高 6 mm 的長形中文字，字寬、筆劃粗細、字間距、行距各約多少？', a:'字寬 4.5 mm；筆劃 0.4 mm；字距 0.75 mm；行距 2 mm。', e:'長形字寬 = 6 × 3/4 = 4.5；筆劃 = 6 / 15 = 0.4；字距 = 6 / 8 = 0.75；行距 = 6 / 3 = 2。記法：「長 3/4、寬 4/3」互為倒數。'}
+    ],
+    quiz:[
+      {q:'寬形中文字的字寬為字高的？', o:['3/4','1','4/3','2/3'], a:2, e:'寬形 = 4/3，長形 = 3/4，方形 = 1。'},
+      {q:'拉丁斜式字母的傾斜角度約為？', o:['45°','60°','75°','90°'], a:2, e:'斜式約 75°。'},
+      {q:'中文字行與行的間隔約為字高的？', o:['1/8','1/3','2/3','1/15'], a:1, e:'中文行距 1/3；拉丁字母行距才是 2/3。'},
+      {q:'拉丁字母筆畫粗細約為字高的？', o:['1/15','1/10','1/8','1/3'], a:1, e:'拉丁 1/10；中文 1/15。'},
+      {q:'A3 圖紙尺度註解的數字建議最小字高為？', o:['2.5 mm','3.5 mm','5 mm','7 mm'], a:0, e:'A1–A5 尺度註解：中文 3.5、拉丁與數字 2.5。'}
+    ]
+  }]
+},
+{
+  id:'B', name:'應用幾何', lec:'09/14 應用幾何', tag:'Applied Geometry',
+  subs:[
+  { id:'B1', title:'徒手畫圓、弧與三點作圓', lv:'基礎',
+    cards:[
+      {f:'徒手畫圓的步驟？', b:'先畫中心線，再加兩條 45° 斜線；在各線上定出半徑位置，畫垂直於半徑的短圓弧，最後連成圓。'},
+      {f:'圓弧與直線或圓弧相切時，先做什麼？', b:'先定出切點及半徑大小，再畫圓弧。'},
+      {f:'徒手畫內切於矩形的橢圓？', b:'在中心線上訂出長短軸，圍成矩形，過兩軸端點畫短圓弧，再連成完整橢圓。'},
+      {f:'如何作圓通過不共線三點 A、B、C？', b:'連 AB、BC；分別作兩線段的垂直平分線，交點 O 為圓心；以 OA 為半徑畫圓。', hot:1}
+    ],
+    examples:[
+      {src:'講義 p.7–11', q:'為什麼三點作圓要用「垂直平分線」？', a:'垂直平分線上任一點到線段兩端等距；兩條垂直平分線的交點 O 到 A、B、C 三點都等距，所以 O 是圓心。', e:'三點若共線，兩條垂直平分線會平行而沒有交點，所以前提是「不在同一直線上」。'}
+    ],
+    quiz:[
+      {q:'三點作圓時，圓心是？', o:['AB 中點','兩條垂直平分線的交點','三角形重心','兩條角平分線的交點'], a:1, e:'到三點等距的點，是兩條垂直平分線的交點（外心）。'},
+      {q:'徒手畫圓時，除中心線外通常再加哪種輔助線？', o:['30° 斜線','45° 斜線','60° 斜線','水平平行線'], a:1, e:'加兩條 45° 斜線，共 8 個半徑點。'}
+    ]
+  },
+  { id:'B2', title:'工程師必懂的四種曲線', lv:'基礎',
+    cards:[
+      {f:'圓（Circle）的特性與應用？', b:'所有點到圓心等距、對稱性最高；x² + y² = R²。應用：軸、半導體晶圓。'},
+      {f:'橢圓（Ellipse）的特性與應用？', b:'任一點到兩焦點的距離和為定值；x²/a² + y²/b² = 1（a > b）。應用：光學透鏡、行星軌道、聲學設計。', hot:1},
+      {f:'拋物線（Parabola）的特性與應用？', b:'到焦點與準線距離相等；y = x²/(4p)。平行光反射後聚於焦點。應用：衛星天線、車燈、太陽能集熱器。'},
+      {f:'漸開線（Involute）的特性與應用？', b:'由基圓上「解開的線」產生；x = r_b(cos t + t sin t)、y = r_b(sin t − t cos t)。維持固定壓力角、平順傳遞扭矩。應用：正齒輪齒形、齒輪箱。', hot:1}
+    ],
+    examples:[
+      {src:'講義 p.3', q:'為什麼齒輪的齒形常用漸開線？', a:'漸開線齒形嚙合時維持固定壓力角，扭矩傳遞平順。', e:'講義的 Takeaway：每種曲線有獨特的幾何性質，用來解決特定工程問題。'}
+    ],
+    quiz:[
+      {q:'車燈反射罩、衛星天線最常用哪種曲線？', o:['圓','橢圓','拋物線','漸開線'], a:2, e:'拋物面把焦點的光反射成平行光（或反之）。'},
+      {q:'「任一點到兩焦點距離和為定值」描述的是？', o:['圓','橢圓','拋物線','漸開線'], a:1, e:'這是橢圓的定義，也是焦點法畫橢圓的原理。'},
+      {q:'正齒輪齒形採用哪種曲線？', o:['拋物線','橢圓','漸開線','雙曲線'], a:2, e:'漸開線齒形維持固定壓力角。'}
+    ]
+  },
+  { id:'B3', title:'橢圓畫法（焦點法・同心圓法・平行四邊形法）', lv:'核心',
+    cards:[
+      {f:'如何由長短軸求橢圓焦點？', b:'以短軸端點為圓心、1/2 長軸為半徑畫弧，與長軸的交點即為兩焦點 F₁、F₂。', hot:1},
+      {f:'焦點法畫橢圓的步驟？', b:'在 O 與焦點 E 之間取點 1、2、3…；以 E 為圓心、A1 為半徑，與以 F 為圓心、1B 為半徑畫弧，交點 G、H 為橢圓上的點；重複後以曲線板連接。', hot:1},
+      {f:'焦點法為何半徑用 A1 與 1B？', b:'A1 + 1B = AB = 長軸長，符合「到兩焦點距離和為定值（= 長軸）」。', hot:1},
+      {f:'同心圓法畫橢圓的步驟？', b:'以 O 為圓心，分別以半長軸、半短軸為半徑畫兩同心圓；兩圓作相同等分（如 16 等分）；過大圓交點作垂直線、過小圓交點作水平線，兩線交點為橢圓上的點。', hot:1},
+      {f:'平行四邊形法畫橢圓的步驟？', b:'畫平行於長短軸（或共軛軸）的平行四邊形；將 OE 與 EA 分成相同等份，皆從 E 開始編號；連 H 與 OE 上的等分點、連 F 與 EA 上的等分點，延長後的交點為橢圓上的點。'},
+      {f:'平行四邊形法的特點？', b:'可由「長短軸」或「共軛軸」畫橢圓，適合已知外接平行四邊形的情況。'}
+    ],
+    examples:[
+      {src:'講義 p.15', q:'長軸 100 mm、短軸 60 mm，兩焦點到中心 O 的距離是多少？', a:'40 mm。', e:'以短軸端點為圓心、半徑 50（半長軸）畫弧交長軸。直角三角形：斜邊 50、一股 30（半短軸），另一股 √(50² − 30²) = 40。'},
+      {src:'講義 p.25', q:'同心圓法中，從大圓交點畫「垂直線」、從小圓交點畫「水平線」，為什麼？（長軸水平）', a:'大圓決定 x 座標（a cosθ），小圓決定 y 座標（b sinθ），交點 (a cosθ, b sinθ) 正是橢圓參數式。', e:'若長軸改為垂直方向，則方向對調：大圓交點作水平線、小圓交點作垂直線。'}
+    ],
+    quiz:[
+      {q:'焦點法中，以 E 為圓心、A1 為半徑，另一弧應以 F 為圓心、半徑為？', o:['A1','1B','OB','EF'], a:1, e:'A1 + 1B = AB，兩半徑和等於長軸。'},
+      {q:'同心圓法的兩個圓半徑分別是？', o:['長軸與短軸','半長軸與半短軸','焦距與半長軸','長軸與焦距'], a:1, e:'以 O 為圓心，半長軸、半短軸為半徑。'},
+      {q:'求焦點時，以短軸端點為圓心，半徑取？', o:['半短軸','半長軸','長軸','焦距'], a:1, e:'半徑 = 1/2 長軸，弧與長軸交點即焦點。'},
+      {q:'平行四邊形法中，OE 與 EA 的等分點從哪裡開始編號？', o:['O','A','E','任意'], a:2, e:'兩邊都從 E 開始依序編號。'}
+    ]
+  },
+  { id:'B4', title:'拋物線畫法（平行四邊形法・包絡線法）', lv:'進階',
+    cards:[
+      {f:'平行四邊形法繪拋物線的步驟？', b:'已知外圍矩形（頂點 O、軸 ON）；將 OA 與 AB 作相同等份；連 O 與 AB 上各等分點；過 OA 上各等分點作 ON 的平行線；對應線交點即拋物線上的點，以曲線板連接，同法繪對稱曲線。', hot:1},
+      {f:'包絡線法繪拋物線的步驟？', b:'已知兩軸 OA、OB；將兩軸作相同等分（如 9 等份）並編號；連接兩軸上的對應標號；作與各線段相切的曲線即為拋物線。', hot:1},
+      {f:'包絡線法的「包絡線」是什麼？', b:'與一族直線全部相切的曲線。拋物線不是穿過點，而是被這些直線「包」出來的。'}
+    ],
+    examples:[
+      {src:'講義 p.46–51', q:'包絡線法與平行四邊形法最大的差別？', a:'平行四邊形法求出曲線「上的點」再連線；包絡線法畫出一族「切線」，曲線與它們相切。', e:'包絡線法連線後，用曲線板畫「與各線段相切」的曲線，而不是穿過交點。'}
+    ],
+    quiz:[
+      {q:'包絡線法中，最後畫出的拋物線與各連線的關係是？', o:['通過各線交點','與各線段相切','垂直各線段','平行各線段'], a:1, e:'拋物線是這些直線的包絡線。'},
+      {q:'平行四邊形法繪拋物線時，過 OA 上各等分點作哪條線的平行線？', o:['AB','ON（軸）','OB','對角線'], a:1, e:'作 ON 的平行線，與 O 連 AB 等分點的直線相交。'}
+    ]
+  },
+  { id:'B5', title:'漸開線畫法（多邊形・圓）', lv:'進階',
+    cards:[
+      {f:'多邊形漸開線的畫法？', b:'以頂點 A 為圓心、邊長 AE 為半徑，從 E 畫弧至 AB 延長線得 1；再以 B 為圓心、B1 為半徑畫至 BC 延長線得 2；依序以下一頂點為圓心、半徑逐次增加一個邊長。'},
+      {f:'圓之漸開線的畫法？', b:'將圓等分（如 12 等分）；把圓周長展開在過點 12 的切線上；過各等分點作切線；在點 11 的切線上截取 1 等份弧長、點 10 截取 2 等份……得各點後以曲線板連接。', hot:1},
+      {f:'漸開線的物理意義？', b:'把纏在圓（或多邊形）上的繩子拉緊後解開，繩端走過的軌跡。'}
+    ],
+    examples:[
+      {src:'講義 p.60–68', q:'圓漸開線中，過點 9 的切線上應截取多長？', a:'3 等份的弧長（圓周長的 3/12）。', e:'點 11 → 1 等份、點 10 → 2 等份、點 9 → 3 等份……離起點越遠，解開的繩子越長。'}
+    ],
+    quiz:[
+      {q:'多邊形漸開線中，每一段圓弧的圓心是？', o:['多邊形中心','依序的多邊形頂點','固定的 A 點','前一段弧的終點'], a:1, e:'依序以 A、B、C…頂點為圓心。'},
+      {q:'圓 12 等分畫漸開線，過點 11 的切線上截取？', o:['1 等份弧長','11 等份弧長','半徑長','直徑長'], a:0, e:'第一個點只解開 1 等份。'}
+    ]
+  }]
+},
+{
+  id:'C', name:'投影原理', lec:'09/21 投影 (1)', tag:'Projection I',
+  subs:[
+  { id:'C1', title:'投影基本觀念與分類', lv:'基礎',
+    cards:[
+      {f:'投影幾何學由誰創立？', b:'18 世紀法國數學家兼軍事工程師孟奇（Gaspard Monge）。研究如何在 2D 平面表達空間物體的形狀、大小與相互關係。'},
+      {f:'什麼是投影？', b:'用一假想的透明平面（投影面）置於物體與觀察者之間或物體後方，以設定的投影方法把物體輪廓投射到平面上，連線而成的圖形。'},
+      {f:'SP、LOS、PL、PP 各指什麼？', b:'SP 視點（光源或眼睛位置）；LOS 視線（視點與物體連線）；PL 投影線（視點、物體、投影面間的連線）；PP 投影面（呈現視圖的平面）。', hot:1},
+      {f:'投影如何分類？', b:'平行投影（斜投影、正投影）與透視投影。', hot:1}
+    ],
+    examples:[
+      {src:'講義 p.2', q:'為什麼工程師需要投影？', a:'工程師必須把 3D 物體轉成 2D 圖面，才能傳達與製造。', e:'投影原理是繪製與閱讀工程圖的理論基礎。'}
+    ],
+    quiz:[
+      {q:'正投影屬於哪一類？', o:['透視投影','平行投影','斜投影','中心投影'], a:1, e:'平行投影包含斜投影與正投影。'},
+      {q:'「呈現投影圖（視圖）的平面」稱為？', o:['SP','LOS','PL','PP'], a:3, e:'Projection Plane。'}
+    ]
+  },
+  { id:'C2', title:'投影面、象限與點的投影', lv:'基礎',
+    cards:[
+      {f:'H 面、V 面、P 面分別是？', b:'H：水平投影面（HP）；V：直立投影面（VP）；P：側投影面（PP），與前兩者皆垂直。'},
+      {f:'基線 GL 與副基線 GL1？', b:'GL：V 面與 H 面的交線。GL1：P 面與 V 面或 H 面的交線。', hot:1},
+      {f:'點的投影如何展開成平面圖？', b:'把 H 面以 GL 為軸旋轉，使 H 與 V 共平面；投影圖不畫投影面邊框。'},
+      {f:'讀點的位置：aᵛ 與 aʰ 到 GL 的距離代表？', b:'aᵛ 到 GL 距離 = 點到 H 面的距離（高度）；aʰ 到 GL 距離 = 點到 V 面的距離（前後）。', hot:1},
+      {f:'四個象限的 aᵛ／aʰ 位置？', b:'第一象限：aᵛ 在 GL 上方、aʰ 在下方。第二：兩者皆在上方。第三：aʰ 在上、aᵛ 在下。第四：兩者皆在下方。', hot:1},
+      {f:'投影落在 GL 上代表什麼？', b:'aʰ 在 GL 上 → 點在 V 面上；aᵛ 在 GL 上 → 點在 H 面上；兩者都在 GL 上 → 點在 GL 上。', hot:1}
+    ],
+    examples:[
+      {src:'講義 p.13 COOL Time', q:'COOL Time：判斷 a～j 各點在空間的哪裡？', fig:'cool',
+       a:'a 第一象限；b 第二象限；c 第三象限；d 第四象限；e 在 V 面上（H 面上方）；f 在 V 面上（H 面下方）；g 在 H 面上（V 面前方）；i 在 H 面上（V 面後方）；j 在 GL 上。',
+       e:'口訣：先看「ᵛ」判斷上下（在 GL 上方＝在 H 面上方），再看「ʰ」判斷前後（在 GL 下方＝在 V 面前方）。b、d 兩投影在同側是第二、四象限的特徵；投影落在 GL 上表示點在某個投影面上。'},
+      {src:'講義 p.8', q:'講義提問：H、V、P 三個投影面各與誰水平、與誰垂直？', a:'H 面水平置放，與 V 面、P 面垂直；V 面直立，與 H、P 面垂直；P 面與 H、V 面皆垂直。三者互相垂直。', e:'三個主投影面兩兩垂直，交線分別為 GL（V∩H）與副基線 GL1（P 與 V 或 H 的交線）。'}
+    ],
+    quiz:[
+      {q:'點的 ᵛ 投影在 GL 下方、ʰ 投影在 GL 上方，點位於？', o:['第一象限','第二象限','第三象限','第四象限'], a:2, e:'第三象限：在 H 面下方、V 面後方；展開後 aʰ 在上、aᵛ 在下。'},
+      {q:'若 aʰ 恰在 GL 上，aᵛ 在 GL 上方，點位於？', o:['H 面上','V 面上','GL 上','P 面上'], a:1, e:'aʰ 到 GL 距離 = 到 V 面距離 = 0，所以在 V 面上；aᵛ 在上方表示在 H 面上方。'},
+      {q:'兩個投影都在 GL 上方的點位於？', o:['第一象限','第二象限','第三象限','第四象限'], a:1, e:'第二象限：H 面上方、V 面後方，H 旋轉後 aʰ 翻到上方。'},
+      {q:'GL 是哪兩個面的交線？', o:['V 與 P','H 與 P','V 與 H','副投影面與 H'], a:2, e:'基線 GL = V 面與 H 面的交線。'}
+    ]
+  },
+  { id:'C3', title:'直線、平面與投影面的關係', lv:'核心',
+    cards:[
+      {f:'直線的投影如何求？', b:'直線的投影就是兩端點投影的連線。直線可延伸通過兩或三個象限。'},
+      {f:'建立平面的四個條件？', b:'① 不在一直線上的三點 ② 二相交直線 ③ 一直線及線外一點 ④ 二平行直線。', hot:1},
+      {f:'平面與投影面「傾斜／垂直／平行」時的投影？', b:'傾斜：投影縮小。垂直：投影成一條線，稱邊視圖。平行：呈現實形（True Shape, T.S.）。', hot:1},
+      {f:'主平面（Principal planes）？', b:'與一個主投影面平行、與另兩個垂直；在前者呈實形，在後二者呈邊視圖。分直立面、水平面、側平面。', hot:1},
+      {f:'單斜面（Inclined planes）？', b:'與一個主投影面垂直、不與其他兩個平行；在前者呈邊視圖，在後二者呈縮小的投影；可經轉換求實形。', hot:1},
+      {f:'複斜面（Oblique planes）？', b:'與三個主投影面皆不平行也不垂直；三個視圖都是縮小的形狀。', hot:1}
+    ],
+    examples:[
+      {src:'講義 p.21', q:'一個平面在前視圖呈一條斜線，在俯視圖與側視圖都是縮小的四邊形，它是哪種平面？', a:'單斜面。', e:'在一個視圖呈邊視圖（線），另外兩個是縮小形狀 → 與 V 面垂直但不平行其他面 → 單斜面。若三個視圖都是縮小形狀，才是複斜面。'}
+    ],
+    quiz:[
+      {q:'平面與投影面垂直時，其投影稱為？', o:['實形','邊視圖','端視圖','縮小投影'], a:1, e:'平面垂直投影面 → 一條線 → 邊視圖。直線的「點」投影才叫端視圖。'},
+      {q:'水平面在哪個視圖呈現實形？', o:['前視圖','俯視圖','側視圖','三個都是'], a:1, e:'水平面平行 H 面，在俯視圖（H 面）呈實形，在前、側視圖呈邊視圖。'},
+      {q:'下列何者「無法」決定一個平面？', o:['不共線三點','二相交直線','二歪斜直線','二平行直線'], a:2, e:'歪斜線不共面，無法建立平面。'},
+      {q:'三個主要視圖都不呈現實形也不呈邊視圖的平面是？', o:['主平面','單斜面','複斜面','側平面'], a:2, e:'複斜面需兩次副投影才能求實形。'}
+    ]
+  },
+  { id:'C4', title:'側投影', lv:'核心',
+    cards:[
+      {f:'點的側投影符號與展開方式？', b:'以 aᵖ 表示；側投影面以 GL1（P 面與 V 面交線）為軸，旋轉至與 V 面共平面。'},
+      {f:'aᵛ 與 aᵖ 的連線有何性質？', b:'與 VP 副基線 GL1 垂直。', hot:1},
+      {f:'aᵖ 到 GL1 的距離等於什麼？', b:'等於點到 V 面的距離，也就是 aʰ 到 GL 的距離。', hot:1},
+      {f:'直線的側投影如何求？', b:'求兩端點的側投影，再連線。'}
+    ],
+    examples:[
+      {src:'講義 p.24–26', q:'已知 aᵛ、aʰ，如何畫出 aᵖ？', a:'從 aᵛ 作垂直於 GL1 的投影線；量取 aʰ 到 GL 的距離，從 GL1 沿投影線量出相同距離，即得 aᵖ。', e:'核心就是「深度」轉移：俯視圖的前後距離 = 側視圖的前後距離。這也是三視圖「寬相等」的來源。'}
+    ],
+    quiz:[
+      {q:'aᵖ 到 GL1 的距離等於？', o:['aᵛ 到 GL 的距離','aʰ 到 GL 的距離','aᵛ 到 GL1 的距離','點到 P 面的距離'], a:1, e:'兩者都等於點到 V 面的距離。'},
+      {q:'側投影面展開時以哪條線為軸？', o:['GL','GL1','GL2','中心線'], a:1, e:'以 VP 副基線 GL1 為軸旋轉至與 V 面共平面。'}
+    ]
+  },
+  { id:'C5', title:'副投影：直線實長與端視圖', lv:'進階',
+    cards:[
+      {f:'什麼是副投影面？有何限制？', b:'自行設立的投影面（輔助投影面），不可隨意設立，必須與某一主要投影面垂直。', hot:1},
+      {f:'副投影的符號？', b:'第一副投影 aˣ、副基線 GL1；第二副投影 aʸ、第二副基線 GL2。'},
+      {f:'點的副投影怎麼量？', b:'投影線垂直副基線；量取 bᵛ 到 GL 的距離 = bˣ 到 GL1 的距離。', hot:1},
+      {f:'用副投影求直線實長的步驟？', b:'作 GL1 平行於 aʰbʰ；過 aʰ、bʰ 作垂直 GL1 的投影線；轉移高度得 aˣ、bˣ；連線 aˣbˣ 即實長。', hot:1},
+      {f:'求直線端視圖（一次副投影）？', b:'當直線在某視圖呈實長時，作副基線垂直於該實長投影；兩端點的副投影重合成一點，即端視圖。', hot:1},
+      {f:'複斜直線的端視圖要幾次副投影？', b:'兩次：先 GL1 ∥ aʰbʰ 求實長 aˣbˣ；再 GL2 ⊥ aˣbˣ，得 aʸ 與 bʸ 重合即端視圖。', hot:1}
+    ],
+    examples:[
+      {src:'講義 p.36–40', q:'為什麼求實長時，副基線要「平行」直線的投影？', a:'副投影面平行於該直線，直線在其上的投影才不會縮短，呈現實長。', e:'副基線 ∥ 直線投影 → 副投影面 ∥ 直線 → 實長；副基線 ⊥ 實長投影 → 副投影面 ⊥ 直線 → 端視圖（一點）。'},
+      {src:'講義 p.45', q:'第二副投影面有哪些規定？', a:'必須垂直於第一副投影面，交線為 GL2，並以 GL2 為軸旋轉至與第一副投影面同平面。', e:'當第一副投影面與直線平行（已得實長）時，再設第二副投影面與直線垂直即得端視圖。'}
+    ],
+    quiz:[
+      {q:'用副投影求實長時，GL1 應與何者平行？', o:['GL','aᵛbᵛ','aʰbʰ（所選視圖中的直線投影）','任一中心線'], a:2, e:'副基線平行於直線的投影 → 副投影面平行直線。'},
+      {q:'求端視圖時，副基線應與直線的哪種投影垂直？', o:['任一投影','縮短的投影','實長投影','邊視圖'], a:2, e:'必須垂直於「實長」投影，兩端點才會重合。'},
+      {q:'副投影面必須？', o:['平行 H 面','與某一主要投影面垂直','與物體表面平行','與 GL 平行'], a:1, e:'副投影面須與主要投影面之一垂直。'},
+      {q:'複斜直線求端視圖的正確順序？', o:['直接 GL1 ⊥ aʰbʰ','先 GL1 ∥ aʰbʰ 求實長，再 GL2 ⊥ aˣbˣ','先 GL1 ⊥ aᵛbᵛ，再 GL2 ∥ aˣbˣ','只需側投影'], a:1, e:'先實長、再端視。'}
+    ]
+  },
+  { id:'C6', title:'平面實形（單斜・複斜）', lv:'進階',
+    cards:[
+      {f:'單斜面實形的求法？', b:'單斜面在某主投影面呈邊視圖；作副基線 GL1 平行於邊視圖，求各點副投影並連接，即得實形（寬度由另一視圖轉移）。', hot:1},
+      {f:'複斜面實形的求法概念？', b:'先在平面上取一條水平線（或正平線）得到實長，再作端視圖使平面成邊視圖，最後作 GL2 平行邊視圖得實形。', hot:1},
+      {f:'複斜面步驟 1：如何取水平線？', b:'過 cᵛ 作水平線（∥ GL）交 aᵛbᵛ 於 dᵛ，再投到 aʰbʰ 得 dʰ；CD 為水平線，其水平投影 cʰdʰ 呈實長。', hot:1},
+      {f:'複斜面步驟 2、3？', b:'作 GL1 ⊥ cʰdʰ 延長線，求各點副投影 → 平面的邊視圖 aˣcˣbˣ；再作 GL2 ∥ 邊視圖，求第二副投影 aʸbʸcʸ → 實形 TS。', hot:1}
+    ],
+    examples:[
+      {src:'講義 p.60–64', q:'複斜面為什麼要先找一條「水平線」？', a:'水平線在俯視圖呈實長；作它的端視圖時，整個平面就會變成一條線（邊視圖）。', e:'邏輯鏈：平面中有一條線看成一點 → 整個平面看成一條線（邊視圖）→ 平行邊視圖再投影 → 實形。單斜面已經有邊視圖，所以只需一步。'}
+    ],
+    quiz:[
+      {q:'單斜面求實形，副基線應？', o:['垂直邊視圖','平行邊視圖','平行 GL','垂直 GL'], a:1, e:'副投影面平行平面 → 實形。'},
+      {q:'複斜面求實形共需幾次副投影？', o:['0','1','2','3'], a:2, e:'第一次得邊視圖，第二次得實形。'},
+      {q:'複斜面第一次副投影的結果是？', o:['實形','平面的邊視圖','直線端視圖','縮小投影'], a:1, e:'GL1 ⊥ 實長線 → 該線成點 → 平面成邊視圖。'}
+    ]
+  }]
+},
+{
+  id:'D', name:'正投影與視圖', lec:'10/05 投影 (2)', tag:'Orthographic Views',
+  subs:[
+  { id:'D1', title:'正投影原理與投影箱', lv:'基礎',
+    cards:[
+      {f:'點、線、面、體的關係？', b:'由點構成線、由線構成面、由面構成體；體的投影可能重疊或被遮住。'},
+      {f:'可見與不可見輪廓的線條？', b:'可見輪廓線用粗實線；不可見輪廓以隱藏線（虛線）表示。'},
+      {f:'什麼是投影箱？', b:'假想把物體放在透明立方箱中，投影到各箱板（投影面）上，再以前視圖投影面為基準展開，得到正投影視圖。', hot:1},
+      {f:'正投影的投影線特性？', b:'觀察者在無窮遠處；投影線彼此平行且垂直於投影面。正投影是平行投影的一種。', hot:1},
+      {f:'為什麼要加俯視圖與側視圖？', b:'只有前視圖無法呈現深度 → 加水平投影面；兩個投影仍可能無法完全表達 → 再加側投影面。'},
+      {f:'選擇視圖的一般原則（General Guidelines）？', b:'前視圖選最能描述物體的方向；通常把最長尺寸當作寬度；最常見組合為前視、俯視、側視。'}
+    ],
+    examples:[
+      {src:'講義 p.6', q:'畫三視圖時，前視圖該怎麼挑？', a:'選最能描述物體形狀特徵的方向，並讓最長尺寸作為寬度。', e:'最常見組合為前、俯、右側視圖（三視圖）。'}
+    ],
+    quiz:[
+      {q:'正投影中投影線與投影面的關係？', o:['傾斜','平行','垂直','匯聚於一點'], a:2, e:'投影線彼此平行且垂直於投影面。'},
+      {q:'投影箱展開時以哪個視圖為基準？', o:['俯視圖','前視圖','右側視圖','後視圖'], a:1, e:'以前視圖的投影面為基準展開。'}
+    ]
+  },
+  { id:'D2', title:'第一角法 vs 第三角法', lv:'核心',
+    cards:[
+      {f:'正投影依物體位置分成哪四種？實際使用哪兩種？', b:'第一、二、三、四角投影。工程圖只用第一角與第三角；二、四角旋轉後視圖會重疊。', hot:1},
+      {f:'第一角法的排列順序與特色？', b:'視點 → 物體 → 投影面（投影面在物體後面）。視圖繪於離對應面較遠處，較不容易了解；歐洲、日本採用（歐式）。', hot:1},
+      {f:'第三角法的排列順序與特色？', b:'視點 → 投影面 → 物體（投影面在物體前面）。視圖繪於靠近對應面處，較容易了解；尺度標註較集中於視圖間；美洲採用（美式）。', hot:1},
+      {f:'第一角法的視圖位置？', b:'以前視圖為準：俯視圖在前視圖「下方」、右側視圖在前視圖「左方」。', hot:1},
+      {f:'第三角法的視圖位置？', b:'以前視圖為準：俯視圖在前視圖「上方」、右側視圖在前視圖「右方」。', hot:1},
+      {f:'兩種角法的視圖外形有何差異？', b:'前後、左右、上下的視圖外形相同，僅部分線條有虛實線差別；主要是排列位置不同。'}
+    ],
+    examples:[
+      {src:'講義 p.18', q:'講義提問：台灣是第幾角法？', a:'CNS 規定第一角法與第三角法都可以使用，但同一張圖不可混用，並須在標題欄標示所用的投影法符號。', e:'考題常問「投影法符號」：第一角法符號是截頭圓錐的側視圖在左、同心圓在右；第三角法則同心圓在左、側視圖在右（與講義 p.18 上方兩圖對照）。', fig:'angle'},
+      {src:'講義 p.27', q:'常犯的第三角法視圖排列錯誤有哪些？', a:'視圖「位置錯」（例如把俯視圖放在前視圖下方）與「未對齊」（俯視圖與前視圖寬度沒對正、側視圖與前視圖高度沒對齊）。', e:'檢查法：前視與俯視左右邊界要對齊（長對正）、前視與側視上下邊界要對齊（高平齊）。'}
+    ],
+    quiz:[
+      {q:'第三角法中，俯視圖位於前視圖的？', o:['上方','下方','左方','右方'], a:0, e:'第三角法：投影面在物體與視點之間，看到什麼就畫在那一側。'},
+      {q:'第一角法中，右側視圖位於前視圖的？', o:['右方','左方','上方','下方'], a:1, e:'第一角法：從右邊看，投影到物體後方（左側）的面上。'},
+      {q:'「視點 → 投影面 → 物體」是？', o:['第一角法','第二角法','第三角法','第四角法'], a:2, e:'第三角法投影面置於物體前面。'},
+      {q:'為什麼工程圖不用第二、四角法？', o:['無法畫虛線','旋轉後視圖會重疊','只能畫兩個視圖','國際標準禁止透視'], a:1, e:'物體置於二、四象限時，H 面旋轉後視圖重疊。'},
+      {q:'歐洲與日本主要採用？', o:['第一角法','第三角法','第二角法','透視法'], a:0, e:'第一角法又稱歐式投影；第三角法為美式。'}
+    ]
+  },
+  { id:'D3', title:'隱藏線、中心線、線條優先與尺度關係', lv:'核心',
+    cards:[
+      {f:'隱藏線與中心線？', b:'被遮住的部分畫隱藏線（虛線）；圓的中心或軸線以中心線（一長劃一點的鏈線）表示。'},
+      {f:'線條重疊時的優先順序？', b:'粗者優先；粗細相同時重要者優先。輪廓線 > 隱藏線 > 中心線。', hot:1},
+      {f:'三視圖的尺度關係？', b:'前視圖與俯視圖：寬度相同（長對正）。前視圖與側視圖：高度相同（高平齊）。俯視圖與側視圖：深度相同（寬相等）。', hot:1},
+      {f:'講義「尺度關係」中 X、Y 代表？', b:'X：物體與前視投影面的距離關係；Y：物體的深度尺度。俯視圖與側視圖的 Y 必須相等。'}
+    ],
+    examples:[
+      {src:'講義 p.23', q:'某處輪廓線、隱藏線、中心線重疊，應畫哪一條？', a:'畫輪廓線（粗實線）。', e:'輪廓線 > 隱藏線 > 中心線；原則是粗者優先，粗細相同時重要者優先。'}
+    ],
+    quiz:[
+      {q:'隱藏線與中心線重疊時應畫？', o:['中心線','隱藏線','兩條都畫','都不畫'], a:1, e:'隱藏線（中線）比中心線（細線）粗，粗者優先。'},
+      {q:'俯視圖與右側視圖相同的尺度是？', o:['寬度','高度','深度','沒有'], a:2, e:'俯視與側視深度相等（寬相等）。'},
+      {q:'前視圖與俯視圖必須對正的是？', o:['寬度（長）','高度','深度','角度'], a:0, e:'長對正。'}
+    ]
+  },
+  { id:'D4', title:'繪圖步驟、45° 反射線法、交線習用畫法', lv:'進階',
+    cards:[
+      {f:'手工與電腦繪圖的效率差異？', b:'手工繪製：三個視圖同時繪製效率較高；電腦繪製：逐一畫各視圖效率較高。'},
+      {f:'手工繪圖的步驟？', b:'① 依物體特徵決定前視圖方向與視圖類別 ② 決定比例與佈局 ③ 畫中心線、基準線 ④ 定出主要點、線位置 ⑤ 先繪圓弧再繪直線 ⑥ 依粗細類別描線、擦除製圖線完成。', hot:1},
+      {f:'為什麼先畫圓弧再畫直線？', b:'直線容易接到圓弧的切點上；反過來很難讓圓弧剛好切到已畫好的直線。'},
+      {f:'45° 反射線法？', b:'過俯視圖與側視圖的相同基準分別作水平線與垂直線，過交點作 45° 斜線；俯視圖各點水平投到斜線再垂直轉向，即定出側視圖位置（反之亦然）。', hot:1},
+      {f:'交線習用畫法？', b:'兩圓柱半徑差異甚大、或圓孔與套筒半徑差異甚大時，交線可以直線代替曲線（習用簡化），真實曲線畫法反而「不佳」。'}
+    ],
+    examples:[
+      {src:'講義 p.39–46', q:'已知前視圖與俯視圖，如何求右側視圖？', a:'用 45° 反射線法：在俯視圖右方、側視圖上方作 45° 斜線，把俯視圖的深度點水平投到斜線、再轉 90° 往下投；高度則由前視圖水平投過去，交點即為側視圖上的點。', e:'45° 斜線的作用就是把「俯視圖的深度」轉向成「側視圖的深度」，等於第 C4 單元的深度轉移。'}
+    ],
+    quiz:[
+      {q:'手工繪圖時應先畫？', o:['直線','圓弧','剖面線','尺度'], a:1, e:'先繪圓弧再繪直線。'},
+      {q:'45° 反射線法用來轉移哪個尺度？', o:['高度','寬度','深度','角度'], a:2, e:'在俯視圖與側視圖間轉移深度。'},
+      {q:'電腦繪圖時較有效率的方式？', o:['三視圖同時畫','逐一畫各視圖','先畫尺度','先畫立體圖'], a:1, e:'手工同時畫、電腦逐一畫。'}
+    ]
+  },
+  { id:'D5', title:'視圖選擇原則與特殊表示法', lv:'進階',
+    cards:[
+      {f:'視圖選擇的原則？', b:'最少視圖、最適視圖、自然位置、表現特徵、避免虛線、符合機件加工程序。', hot:1},
+      {f:'最少視圖原則的例子？', b:'薄板、圓柱、球體只需一個視圖，並在尺度加註厚度 t、直徑 ø 等。', hot:1},
+      {f:'自然位置與表現特徵原則？', b:'物體以自然或習慣的位置投影；最能表現特徵、最易辨讀的面當前視圖。'},
+      {f:'避免虛線原則？', b:'若左側視圖虛線較少或較清晰，可用左側視圖取代右側視圖。', hot:1},
+      {f:'符合機件加工程序原則？', b:'切削加工件的視圖方向應與工件挾持於機臺上加工的方向一致（例如車削件軸線水平）。'},
+      {f:'常見的特殊表示法？', b:'局部放大圖、轉正表示法、展開表示法、斷裂表示法（物件較長時）、滾花／金屬網／紋面板表示法。'}
+    ],
+    examples:[
+      {src:'講義 p.48', q:'什麼時候用左側視圖取代右側視圖？', a:'當左側視圖的虛線較少或視圖較清晰時。', e:'屬於「避免虛線原則」。'},
+      {src:'講義 p.62–64', q:'講義範例：同樣是「視圖選擇」，為什麼有的物體需要三個視圖，有的兩個、甚至一個就夠？', a:'視圖數量依形狀而定：特徵分布在三個方向時需前、俯、右三視圖；圓柱類加註 ø、薄板加註 t 後，兩個或一個視圖就能完整表達。', e:'答題重點是說出依據的原則（最少視圖、最適視圖），而不是一律畫三視圖。講義 p.62 同時提問「第一、三角法？」：CNS 兩者皆可，但要在標題欄標示投影法符號。'}
+    ],
+    quiz:[
+      {q:'球體只需一個視圖，尺度前應加註？', o:['t','Sø 或 SR','□','C'], a:1, e:'球面加註 S（SR 或 Sø）。'},
+      {q:'較長的物件可用哪種表示法縮短圖面？', o:['轉正表示法','斷裂表示法','展開表示法','局部放大圖'], a:1, e:'斷裂表示法。'},
+      {q:'車床加工的軸類零件，前視圖的軸線通常應？', o:['垂直','水平','45°','任意'], a:1, e:'符合加工程序原則：與工件在車床上的挾持方向一致。'},
+      {q:'薄板零件可只用一個視圖，並加註？', o:['ø','R','t','S'], a:2, e:'t = 板厚。'}
+    ]
+  }]
+},
+{
+  id:'E', name:'尺度標註', lec:'10/12 尺度、標記', tag:'Dimensioning',
+  subs:[
+  { id:'E1', title:'尺度的基本概念與組成', lv:'基礎',
+    cards:[
+      {f:'什麼是尺度？', b:'兩點、兩線、兩面或點、線、面之間的距離；提供物體形狀的真實大小與特徵。'},
+      {f:'尺度標註的四項標準？', b:'正確、完整、清晰、美觀。', hot:1},
+      {f:'大小尺度與位置尺度？', b:'大小尺度：各基本形體的形狀與大小。位置尺度：各基本形體間的相互位置關係。', hot:1},
+      {f:'尺度的組成要素？', b:'尺度界線（位置，細實線）、尺度線（方向，細實線）、箭頭（範圍）、數字（大小）、註解（一般註解、特別／專有註解），另有指線與符號。', hot:1},
+      {f:'兩項基本要求？', b:'① 標註用的數字與文字不得與任何線條相交 ② 依讀者方便，盡量標註在兩個視圖之間。', hot:1}
+    ],
+    examples:[
+      {src:'講義 p.4', q:'講義提問：工程圖常見的尺度單位是什麼？', a:'公釐（mm）。', e:'工程圖以 mm 為預設單位，數字後通常不寫單位；若用其他單位才需另外註明。'},
+      {src:'講義 p.6', q:'講義提問：數字被輪廓線穿過的標註「正確嗎？為什麼？」', a:'不正確。標註用的數字及文字不得與任何線條相交。', e:'線條穿過數字會讓 3 與 8、1 與 7 混淆，造成誤讀。'}
+    ],
+    quiz:[
+      {q:'「表示距離的方向」的是？', o:['尺度界線','尺度線','箭頭','數字'], a:1, e:'界線＝位置、尺度線＝方向、箭頭＝範圍、數字＝大小。'},
+      {q:'孔中心到邊緣的距離屬於？', o:['大小尺度','位置尺度','參考尺度','總長尺度'], a:1, e:'描述形體之間的相互位置。'},
+      {q:'尺度界線與尺度線使用的線型？', o:['粗實線','細實線','虛線','細鏈線'], a:1, e:'兩者都是細實線。'}
+    ]
+  },
+  { id:'E2', title:'尺度界線、尺度線、箭頭、數字、指線', lv:'核心',
+    cards:[
+      {f:'尺度界線與輪廓、尺度線的距離？', b:'與輪廓保留約 1 mm 空隙；尾端超出尺度線約 2～3 mm。', hot:1},
+      {f:'尺度線的間距規定？', b:'尺度線與輪廓線間距約字高 2～3 倍；尺度線與尺度線間約字高 2 倍。', hot:1},
+      {f:'哪些線不得當尺度線？', b:'輪廓線、中心線、剖面線。', hot:1},
+      {f:'尺度線的方向？', b:'通常與尺度界線垂直；除半徑、直徑外，應與被標註兩端點間的輪廓線平行。'},
+      {f:'箭頭空間不足時？', b:'尺度界線間距過小時，可用小圓點代替箭頭；或把箭頭畫在尺度線外側。'},
+      {f:'尺度數字的位置與方向？', b:'寫在尺度線上方，尺度線不中斷；方向順著尺度線，以朝上、朝左為原則；衝突時以朝上、朝右為原則。', hot:1},
+      {f:'數字與中心線、剖面線相交時？', b:'應避免；若無法避免，中心線或剖面線要讓開（斷開）。', hot:1},
+      {f:'指線的畫法？', b:'細實線；指示端與水平線夾 45° 或 60°，箭頭接觸指示位置；尾部為水平線，文字寫在其上方且與水平線等長；註解長時文字續寫並對齊。', hot:1}
+    ],
+    examples:[
+      {src:'講義 p.9–11', q:'字高 3.5 mm 時，第一條尺度線離輪廓多遠？兩條尺度線間隔多少？', a:'離輪廓約 7～10.5 mm；兩尺度線間約 7 mm。', e:'尺度線與輪廓線間距 = 字高 2～3 倍；尺度線之間 = 字高 2 倍。'}
+    ],
+    quiz:[
+      {q:'尺度界線尾端應超出尺度線約？', o:['1 mm','2～3 mm','5 mm','10 mm'], a:1, e:'與輪廓留 1 mm 空隙；超出尺度線 2～3 mm。'},
+      {q:'尺度數字寫在？', o:['尺度線中斷處','尺度線上方','尺度線下方','尺度界線旁'], a:1, e:'寫在上方，尺度線不中斷。'},
+      {q:'指線指示端與水平線的夾角？', o:['30° 或 45°','45° 或 60°','60° 或 75°','任意'], a:1, e:'45° 或 60°。'},
+      {q:'下列何者可以當作尺度線？', o:['中心線','輪廓線','剖面線','都不行'], a:3, e:'輪廓線、中心線、剖面線均不得作為尺度線。'},
+      {q:'尺度數字方向「朝上朝左」衝突時改為？', o:['朝下朝左','朝上朝右','一律水平','朝下朝右'], a:1, e:'衝突時以朝上、朝右為原則。'}
+    ]
+  },
+  { id:'E3', title:'各類標註方法與符號', lv:'核心',
+    cards:[
+      {f:'直徑 ø 的標註原則？', b:'全圓的直徑以標註於「非圓形」視圖為原則；半圓以上的圓弧標直徑於圓形視圖上；半視圖時尺度線須超過中心線。', hot:1},
+      {f:'半徑 R 的標註原則？', b:'半圓以下的圓弧標半徑，標在圓形視圖上；尺度線須通過或對準圓心；半徑過大可縮短並轉折；180° 半圓可用直徑或半徑。', hot:1},
+      {f:'球面、方形、板厚的符號？', b:'球面：SR（球半徑）、Sø（球直徑），常用零件端面可省略 S。方形：□ + 一邊長。板厚：t（可省略顯示板厚的視圖）。', hot:1},
+      {f:'角度與弧長的尺度線？', b:'角度：圓弧，圓心為角的頂點；狹小時可標對頂角方向。弧長：與弧同心的圓弧＋弧長符號 ⌒；多個同心弧用箭頭指明，箭頭尾端留 1 mm。'},
+      {f:'去角（倒角）的標註？', b:'端面斜切 45° 或 30°；45° 去角可寫 C2 或 2×45°。', hot:1},
+      {f:'錐度與斜度的公式？', b:'錐度 =（D − d）÷ L，兩端「直徑差」；斜度 =（H − h）÷ L，兩端「高度差」；常以 1:n 表示。', hot:1},
+      {f:'曲線的標註？', b:'由圓弧組成：標各圓弧半徑；不規則曲線：支距法或座標法（應用基準線）。'},
+      {f:'坑座有哪三種？', b:'魚眼坑、錐坑、柱坑；採一般尺度標註法。講義符號：⊔ 沉孔（直徑與深度）、∨ 沉頭孔／埋頭孔（角度與直徑）、↧ 深度。'},
+      {f:'數量與節圓直徑的寫法？', b:'相同特徵：2×ø6。節圓直徑：PCD，如 4×ø6 PCD 50。'},
+      {f:'圓角或去角讓稜角消失時？', b:'尺度仍標在原有稜角上；稜角用細線畫出並在交點加一圓點。多個連續狹窄部位可高低交錯或局部放大。'}
+    ],
+    examples:[
+      {src:'講義 p.28', q:'錐體大徑 30、小徑 20、長 50，錐度是多少？', a:'1:5。', e:'錐度 =（30 − 20）÷ 50 = 10/50 = 1/5。注意錐度用直徑差、不除以 2。'},
+      {src:'講義 p.29', q:'斜面兩端高 18 與 12、長 36，斜度是多少？', a:'1:6。', e:'斜度 =（18 − 12）÷ 36 = 6/36 = 1/6。'},
+      {src:'講義 p.41 Cheat Sheet', q:'「4×ø6 PCD 50」是什麼意思？', a:'4 個直徑 6 mm 的孔，均布在直徑 50 mm 的節圓上。', e:'2× 表示數量，PCD = Pitch Circle Diameter。'}
+    ],
+    quiz:[
+      {q:'全圓的直徑原則上標註在？', o:['圓形視圖','非圓形視圖','任何視圖','只標半徑'], a:1, e:'全圓直徑以標註於非圓形視圖為原則。'},
+      {q:'小於半圓的圓弧應標？', o:['ø','R','S','□'], a:1, e:'半圓以下標半徑，且在圓形視圖上。'},
+      {q:'錐度公式為？', o:['(D−d)/2L','(D−d)/L','(H−h)/L','D/L'], a:1, e:'錐度 =（D − d）÷ L；斜度才是（H − h）÷ L。'},
+      {q:'「C3」代表？', o:['3 mm 半徑圓角','3 × 45° 去角','3 個孔','錐度 1:3'], a:1, e:'C = 45° 倒角，C3 = 3 × 45°。'},
+      {q:'球直徑 30 的標註是？', o:['ø30','SR30','Sø30','R15'], a:2, e:'球面加 S：Sø30（或 SR15）。'},
+      {q:'□20 的意思？', o:['面積 20','邊長 20 的正方形','20 個方孔','對角線 20'], a:1, e:'方形符號只需標一邊長。'}
+    ]
+  },
+  { id:'E4', title:'尺度安置：安排、基準、多餘尺度', lv:'進階',
+    cards:[
+      {f:'尺度安排的原則？', b:'全長尺度不可省略；避免尺度線與尺度界線相交；較長的尺度放最外側（短內長外）；尺度線層數不宜太多。', hot:1},
+      {f:'可以把尺度標在視圖內部嗎？', b:'可以：尺度線延伸過長或可能與其他線交錯時；內部與外部尺度宜分別標在視圖兩側。'},
+      {f:'尺度基準有哪些？', b:'依加工需要以工件加工面為基準；以中心線為基準；以基準面與基準線為基準；或單一尺度線以基準面為起點單向標註。', hot:1},
+      {f:'相同形態與對稱形態？', b:'相同形態擇一標註大小（如 2×ø6），等距等角可簡化位置尺度；完全對稱者以中心線為基準，省略位置尺度。', hot:1},
+      {f:'重複尺度與多餘尺度？', b:'重複尺度：錯。多餘尺度：不好；若要保留作參考，加上括號（參考尺度）則可以。', hot:1}
+    ],
+    examples:[
+      {src:'講義 p.34', q:'講義提問：短尺度標在外側、長尺度標在內側「為什麼不好」？', a:'較短尺度的尺度界線必須穿過長尺度的尺度線，造成線條相交、難以閱讀。應「短內長外」。', e:'原則：避免尺度線與尺度界線相交，較長的尺度放最外側。'},
+      {src:'講義 p.40', q:'總長 100 已標註，各段 20、48、32 也全部標出，這樣有什麼問題？怎麼改？', a:'形成多餘尺度（封閉尺度鏈）。應省略其中一段，或把它加括號作參考尺度，如（32）。', e:'重複尺度＝錯；多餘尺度＝不好；加括號＝可以。'}
+    ],
+    quiz:[
+      {q:'下列何者「不可」省略？', o:['對稱件的位置尺度','全長尺度','相同孔的重複大小尺度','多餘尺度'], a:1, e:'物體的全長尺度不可省略。'},
+      {q:'多餘尺度若要保留，應？', o:['畫成粗線','加上括號作參考尺度','改用紅色','加 ±'], a:1, e:'加括號 = 參考尺度。'},
+      {q:'較長的尺度應放在？', o:['最內側','最外側','視圖內部','任意'], a:1, e:'短內長外，避免尺度界線穿過尺度線。'},
+      {q:'完全對稱的工件，位置尺度可如何處理？', o:['全部標兩次','以中心線為基準，省略位置尺度','改用座標標註','加註 S'], a:1, e:'對稱形態以中心線為基準。'}
+    ]
+  }]
+}
+];
+
+// ===== 關鍵字（依主題分類，相似觀念相鄰）=====
+const KEYWORDS = [
+  {g:'線條與工程字', c:'A', items:[
+    ['徒手畫','只用手與筆記錄構想或現場測繪'],['用器畫','以製圖儀器繪製'],['電腦製圖','以 CAD 繪製正式工程圖'],
+    ['粗線','≈ 中線 × 1.5'],['中線','≈ 細線 × 2；虛線用中線'],['細線','約粗線 1/4～1/3'],
+    ['粗實線','可見輪廓線、圖框線'],['細實線','尺度線、尺度界線、指線、剖面線'],['折斷線','不規則細實線或齒形 30°'],
+    ['虛線','每段 3 mm、間隔 1 mm，隱藏線'],['隱藏線','被遮住的輪廓，用虛線'],
+    ['細鏈線','中心線、節線、假想線'],['中心線','圓心或軸線，一長劃一點'],['假想線','相鄰零件或移動位置，細鏈線'],
+    ['粗鏈線','需特殊處理物面的範圍'],['割面線','兩端粗中間細，粗段 ≤ 10 mm'],
+    ['虛線相交','交點維持實質相交'],['T 形相接','虛線開始不留間隙'],['實線延長','虛線前留 1 mm 空隙'],['平行虛線','間隙錯開；有中心線則對齊'],
+    ['單筆字','筆畫粗細＝筆尖粗細'],['等線體','中文字的字體原則'],['方形字','字寬＝字高'],['長形字','字寬＝3/4 字高'],['寬形字','字寬＝4/3 字高'],['斜式字','傾斜約 75°']
+  ]},
+  {g:'應用幾何', c:'B', items:[
+    ['垂直平分線','三點作圓：兩垂直平分線交點為圓心'],['圓','到圓心等距；x²+y²=R²'],
+    ['橢圓','到兩焦點距離和＝長軸'],['焦點','以短軸端點為心、半長軸為半徑交長軸'],['焦點法','半徑 A1 與 1B 畫弧求點'],['同心圓法','大圓作垂線、小圓作水平線'],['平行四邊形法','等分點連線求交點（橢圓／拋物線）'],
+    ['拋物線','到焦點與準線等距；車燈、天線'],['包絡線法','連對應等分點，作相切曲線'],
+    ['漸開線','繩子從基圓解開的軌跡；齒輪齒形'],['基圓','漸開線產生的圓'],['壓力角','漸開線齒形維持固定']
+  ]},
+  {g:'投影原理', c:'C', items:[
+    ['孟奇 Monge','投影幾何學創始者'],['視點 SP','光源或眼睛位置'],['投影線 PL','視點、物體、投影面的連線'],['投影面 PP','呈現視圖的平面'],
+    ['平行投影','斜投影與正投影'],['透視投影','投影線匯聚於視點'],
+    ['H 面','水平投影面'],['V 面','直立投影面'],['P 面','側投影面'],['基線 GL','V 面與 H 面交線'],['副基線 GL1','P 面與 V 或 H 面交線；或第一副基線'],
+    ['象限','由 H、V 面分出的四個空間'],['邊視圖','平面垂直投影面時呈一條線'],['實形 TS','平面平行投影面時的真實形狀'],
+    ['主平面','平行一個主投影面'],['單斜面','垂直一個主投影面、不平行其他'],['複斜面','與三主投影面皆不平行不垂直'],
+    ['側投影','aᵖ 到 GL1 ＝ aʰ 到 GL'],['副投影面','須與某主投影面垂直'],['實長 TL','副基線 ∥ 直線投影'],['端視圖','副基線 ⊥ 實長投影，直線成一點'],['第二副投影','GL2 ⊥ 第一副投影面']
+  ]},
+  {g:'正投影與視圖', c:'D', items:[
+    ['投影箱','透明箱展開成六視圖'],['正投影','投影線平行且垂直投影面'],['前視圖','最能表現特徵的面'],['俯視圖','由上往下看'],['右側視圖','由右往左看'],['三視圖','前、俯、右側'],
+    ['第一角法','視點→物體→投影面；歐洲、日本'],['第三角法','視點→投影面→物體；美洲'],['投影法符號','標題欄標示角法'],
+    ['線條優先','輪廓線 > 隱藏線 > 中心線'],['長對正','前視與俯視寬度相同'],['高平齊','前視與側視高度相同'],['寬相等','俯視與側視深度相同'],
+    ['45° 反射線法','轉移俯視與側視的深度'],['交線習用畫法','半徑差異大時交線以直線代替'],
+    ['最少視圖原則','薄板、圓柱、球用一個視圖'],['避免虛線原則','左側視圖虛線少可取代右側'],['自然位置原則','以習慣位置投影'],['加工程序原則','與挾持加工方向一致'],
+    ['局部放大圖','放大細小部位'],['斷裂表示法','較長物件中間斷開']
+  ]},
+  {g:'尺度標註', c:'E', items:[
+    ['大小尺度','基本形體的形狀與大小'],['位置尺度','形體間的相互位置'],
+    ['尺度界線','細實線；離輪廓 1 mm，超出 2～3 mm'],['尺度線','細實線；離輪廓字高 2～3 倍'],['箭頭','距離的範圍；太窄用小圓點'],['尺度數字','寫在尺度線上方，朝上朝左'],['指線','45° 或 60°，尾端水平線'],
+    ['ø 直徑','全圓標在非圓形視圖'],['R 半徑','半圓以下，標在圓形視圖'],['SR／Sø','球面半徑／直徑'],['□ 方形','只標一邊長'],['t 板厚','可省略顯示板厚的視圖'],
+    ['C 倒角','C2 ＝ 2×45°'],['錐度','(D−d)/L，直徑差'],['斜度','(H−h)/L，高度差'],['弧長','同心圓弧＋⌒ 符號'],
+    ['坑座','魚眼坑、錐坑、柱坑'],['沉孔','直徑與深度'],['PCD','節圓直徑'],['2× 數量','相同特徵的數量'],
+    ['短內長外','較長尺度放最外側'],['尺度基準','加工面、中心線、基準面'],['對稱形態','以中心線為基準省略位置尺度'],['重複尺度','錯誤'],['參考尺度','多餘尺度加括號']
+  ]}
+];
+
+// ===== 工具 =====
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const LBL = {m:'精熟', r:'再複習', w:'待加強'};
+const STAR = {m:1, r:2, w:3};
+const LETTER = 'ABCDEF';
+const FOLDER = Object.fromEntries(DATA.map(f => [f.id, f]));
+const SUB = {}; DATA.forEach(f => f.subs.forEach((s, i) => { s.folder = f.id; s.order = i; SUB[s.id] = s; }));
+const cid = (s,i) => s.id+'-c'+i, xid = (s,i) => s.id+'-x'+i, qid = (s,i) => s.id+'-q'+i;
+
+// ===== 學習進度狀態（本機 + 帳號同步）=====
+const LS_KEY = 'ed1106-progress-v1', LS_BOARD = 'ed1106-board-v1';
+function lsGet(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } }
+function lsSet(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+let S = Object.assign({t:0, marks:{}, seen:{}, quiz:{}, done:{}}, lsGet(LS_KEY) || {});
+let BOARD = Object.assign({t:0, chips:[], strokes:[]}, lsGet(LS_BOARD) || {});
+let remote = null, syncTimer = null, boardTimer = null, syncLabel = '進度存於此瀏覽器';
+function touch(){ S.t = Date.now(); lsSet(LS_KEY, S); queueSync(); }
+function touchBoard(){ BOARD.t = Date.now(); lsSet(LS_BOARD, BOARD); queueBoardSync(); }
+function queueSync(){ if(!remote) return; clearTimeout(syncTimer); syncTimer = setTimeout(() => remote.prog.set({json: JSON.stringify(S), t: S.t}).catch(()=>{}), 1500); }
+function queueBoardSync(){ if(!remote) return; clearTimeout(boardTimer); boardTimer = setTimeout(() => { const j = JSON.stringify(BOARD); if(j.length < 240000) remote.board.set({json: j, t: BOARD.t}).catch(()=>{}); }, 2500); }
+async function initSync(){
+  if(!window.claude || !window.claude.use) return;
+  try{
+    const [db, user] = await Promise.all([claude.use('db'), claude.use('user')]);
+    if(!db || !user) return;
+    const uid = await user.id(); if(!uid) return;
+    const base = 'data/users/' + uid + '/';
+    remote = {prog: db.doc(base + 'progress'), board: db.doc(base + 'board')};
+    const [p, b] = await Promise.all([remote.prog.get(), remote.board.get()]);
+    let changed = false;
+    if(p.exists){ const d = p.data(); if(d && d.t > S.t){ try{ S = Object.assign({marks:{},seen:{},quiz:{},done:{}}, JSON.parse(d.json)); lsSet(LS_KEY, S); changed = true; }catch(e){} } }
+    else if(S.t) queueSync();
+    if(b.exists){ const d = b.data(); if(d && d.t > BOARD.t){ try{ BOARD = Object.assign({chips:[],strokes:[]}, JSON.parse(d.json)); lsSet(LS_BOARD, BOARD); changed = true; }catch(e){} } }
+    else if(BOARD.t) queueBoardSync();
+    syncLabel = '進度已同步到你的帳號';
+    renderHeader();
+    if(changed) render();
+  }catch(e){ /* 保持本機模式 */ }
+}
+
+// ===== 統計 =====
+function subStats(s){
+  const c = {m:0, r:0, w:0}; let stars = 0, seen = 0;
+  s.cards.forEach((_, i) => { const k = S.marks[cid(s,i)]; if(k){ c[k]++; stars += STAR[k]; } if(S.seen[cid(s,i)]) seen++; });
+  s.examples.forEach((_, i) => { if(S.seen[xid(s,i)]) seen++; });
+  s.quiz.forEach((_, i) => { if(S.quiz[qid(s,i)]) seen++; });
+  const total = s.cards.length + s.examples.length + s.quiz.length;
+  const pct = S.done[s.id] ? 100 : Math.round(seen / total * 100);
+  return {c, stars, pct, marked: c.m + c.r + c.w};
+}
+function folderStats(f){
+  const o = {c:{m:0,r:0,w:0}, stars:0, pct:0, marked:0};
+  f.subs.forEach(s => { const t = subStats(s); o.stars += t.stars; o.marked += t.marked; o.pct += t.pct; ['m','r','w'].forEach(k => o.c[k] += t.c[k]); });
+  o.pct = Math.round(o.pct / f.subs.length); return o;
+}
+function sortedSubs(f){
+  const st = f.subs.map(s => ({s, t: subStats(s)}));
+  const any = st.some(x => x.t.marked > 0);
+  if(any) st.sort((a, b) => (b.t.stars - a.t.stars) || (a.s.order - b.s.order));
+  return {list: st, byStars: any};
+}
+const statusPill = p => p >= 100 ? '<span class="st ok">✓ 已讀</span>' : p > 0 ? `<span class="st ing">學習中 ${p}%</span>` : '<span class="st un">未讀</span>';
+const starTxt = n => n ? `★ ${n}` : '★ 0';
+const mkTxt = c => `<span class="mk"><span class="m">精 ${c.m}</span><span class="r">複 ${c.r}</span><span class="w">加 ${c.w}</span></span>`;
+
+// ===== 導覽 =====
+let nav = [{s:'home'}];
+function go(v){ nav.push(v); render(); window.scrollTo(0,0); }
+function back(n=1){ if(nav.length > 1){ nav.length = Math.max(1, nav.length - n); render(); window.scrollTo(0,0); } }
+function toHome(){ nav = [{s:'home'}]; render(); window.scrollTo(0,0); }
+
+function renderHeader(){
+  const exam = new Date('2026-10-19T09:00:00+08:00');
+  const days = Math.ceil((exam - new Date()) / 86400000);
+  const dtxt = days > 0 ? `D−${days}` : days === 0 ? '今天' : '已考完';
+  $('#hdr').innerHTML = `<div class="tb">
+    <div><span class="lbl">Course</span><span class="course">BME 1106</span></div>
+    <div><span class="lbl">圖名 Title</span><span class="name">工程圖學考點網</span><div class="sync">${esc(syncLabel)}</div></div>
+    <div class="exam"><span class="lbl">Exam 1</span><b>10/19 ${dtxt}</b><small>新生大樓 103</small></div>
+  </div>`;
+}
+function crumbs(){
+  if(nav.length < 2) return '';
+  const parts = [`<button class="backbtn" data-act="back">← 返回</button>`, `<button data-act="home">首頁</button>`];
+  nav.slice(1).forEach((v, i) => {
+    const last = i === nav.length - 2;
+    const name = v.s === 'kw' ? '關鍵字提取' : v.s === 'folder' ? FOLDER[v.f].name : v.s === 'sub' ? SUB[v.id].title : v.s === 'mastery' ? `熟練度・${LBL[v.k]}` : '';
+    parts.push('<span>/</span>' + (last ? `<span>${esc(name)}</span>` : `<button data-act="crumb" data-i="${i+1}">${esc(name)}</button>`));
+  });
+  return `<nav class="crumbs">${parts.join('')}</nav>`;
+}
+function render(){
+  const v = nav[nav.length - 1];
+  const el = $('#view');
+  if(v.s !== 'kw') teardownBoard();
+  if(v.s === 'home') el.innerHTML = homeHTML();
+  else if(v.s === 'folder') el.innerHTML = crumbs() + folderHTML(FOLDER[v.f]);
+  else if(v.s === 'sub') { el.innerHTML = crumbs() + subHTML(SUB[v.id], v); afterSub(SUB[v.id], v); }
+  else if(v.s === 'mastery') { el.innerHTML = crumbs() + masteryHTML(FOLDER[v.f], v); afterMastery(FOLDER[v.f], v); }
+  else if(v.s === 'kw') { el.innerHTML = crumbs() + kwHTML(); setupBoard(); }
+}
+
+// ===== 首頁 =====
+function homeHTML(){
+  const allKw = KEYWORDS.reduce((n, g) => n + g.items.length, 0);
+  const sample = ['第三角法','錐度','端視圖','割面線','焦點法','長對正'];
+  const pos = [[8,18],[52,12],[22,48],[62,52],[10,76],[48,80]];
+  const folders = DATA.map(f => {
+    const t = folderStats(f);
+    return `<button class="fcard" style="--gc:var(--g-${f.id})" data-act="folder" data-f="${f.id}">
+      <span class="code">${f.id}</span>
+      <span class="nm">${esc(f.name)}</span>
+      <span class="lec">${esc(f.lec)} · ${f.subs.length} 個資料夾</span>
+      <span class="bar"><i style="width:${t.pct}%"></i></span>
+      <span class="row"><span>${t.pct}% 已讀</span><span class="stars">${starTxt(t.stars)}</span></span>
+      <span class="row">${mkTxt(t.c)}</span>
+    </button>`;
+  }).join('');
+  return `
+  <div class="sh"><h2><span class="no">01</span>關鍵字提取</h2><span class="note">${allKw} 個關鍵字，依主題分類</span></div>
+  <button class="kwentry" data-act="kw">
+    <span class="t"><h3>關鍵字畫布</h3><p>點選下方分類好的關鍵字放到畫布上，拖曳、縮放，再用四色畫筆畫重點、連關係線。</p><span class="go">進入畫布 →</span></span>
+    <span class="pv" aria-hidden="true">${sample.map((s,i)=>`<span style="left:${pos[i][0]}%;top:${pos[i][1]}%;border-left:3px solid var(--g-${'DEDABD'[i]})">${s}</span>`).join('')}</span>
+  </button>
+  <div class="sh"><h2><span class="no">02</span>主題檔案夾</h2><span class="note">星星數：精熟 1★・再複習 2★・待加強 3★，星星越多代表越需要加強</span></div>
+  <div class="folders">${folders}</div>`;
+}
+
+// ===== 檔案夾 =====
+function folderHTML(f){
+  const t = folderStats(f);
+  const {list, byStars} = sortedSubs(f);
+  const rows = list.map(({s, t}) => `<button class="srow" data-act="sub" data-id="${s.id}">
+      <span class="ix">${s.id}</span>
+      <span style="min-width:0"><span class="tt">${esc(s.title)}</span>
+        <span class="meta"><span class="lv">${s.lv}</span>${t.marked ? mkTxt(t.c) : `<span class="mk" style="color:var(--ink2)">${s.cards.length} 張卡・${s.examples.length} 例題・${s.quiz.length} 測驗</span>`}</span></span>
+      <span class="rt">${statusPill(t.pct)}<span class="stars">${starTxt(t.stars)}</span></span>
+    </button>`).join('');
+  return `<div class="fhead" style="--gc:var(--g-${f.id})"><span class="code">${f.id}</span><div><h1>${esc(f.name)}</h1><div class="lec">${esc(f.lec)} · ${esc(f.tag)} · 平均 ${t.pct}% 已讀</div></div></div>
+  <div class="mastery">
+    <div class="lab"><b>熟練度紀錄</b><small>依抽認卡標記整理</small></div>
+    ${['m','r','w'].map(k => `<button class="mtile ${k}" data-act="mastery" data-f="${f.id}" data-k="${k}"><span class="n">${t.c[k]}</span><span class="t">${LBL[k]}</span><span class="s">${'★'.repeat(STAR[k])} · 抽認卡／提問／出題</span></button>`).join('')}
+  </div>
+  <div class="sh"><h2>學習資料夾</h2><span class="sortnote">${byStars ? '排序：星星數多 → 少（需加強的在上面）' : '排序：基礎 → 進階'}</span></div>
+  <div class="subs">${rows}</div>`;
+}
+
+// ===== 資料夾（三區塊）=====
+function subHTML(s, v){
+  const t = subStats(s);
+  v.tab = v.tab || 'cards'; v.ci = v.ci || 0;
+  const quizDone = s.quiz.filter((_, i) => S.quiz[qid(s,i)]).length;
+  return `<div class="subhead"><div><div class="k">${s.id} · ${s.lv} · ${esc(FOLDER[s.folder].name)}</div><h1>${esc(s.title)}</h1></div>
+    <div class="acts">${statusPill(t.pct)} <span class="stars">${starTxt(t.stars)}</span>
+    <button class="btn ${S.done[s.id] ? 'ok' : ''}" data-act="done">${S.done[s.id] ? '✓ 已讀' : '標為已讀'}</button></div></div>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="${v.tab==='cards'}" data-act="tab" data-t="cards">① 觀念抽認卡 <span class="c">${s.cards.length}</span></button>
+    <button class="tab" role="tab" aria-selected="${v.tab==='ex'}" data-act="tab" data-t="ex">② 講義題目 <span class="c">${s.examples.length}</span></button>
+    <button class="tab" role="tab" aria-selected="${v.tab==='quiz'}" data-act="tab" data-t="quiz">③ 小測驗 <span class="c">${quizDone}/${s.quiz.length}</span></button>
+  </div>
+  <div id="pane"></div>`;
+}
+function afterSub(s, v){
+  const pane = $('#pane');
+  if(v.tab === 'cards') renderCards(pane, s, v);
+  else if(v.tab === 'ex') renderExamples(pane, s);
+  else renderQuiz(pane, s.quiz.map((q, i) => ({...q, id: qid(s,i), ctx: s.title})), {persist:true, sub:s});
+}
+function markButtons(id){
+  const cur = S.marks[id];
+  return ['m','r','w'].map(k => `<button class="markbtn ${k}" aria-pressed="${cur===k}" data-act="mark" data-id="${id}" data-k="${k}">${LBL[k]} <span class="s">${'★'.repeat(STAR[k])}</span></button>`).join('');
+}
+function renderCards(pane, s, v){
+  const i = Math.min(v.ci, s.cards.length - 1), c = s.cards[i], id = cid(s,i);
+  pane.innerHTML = `<div class="fc-wrap">
+    <div class="fc-nav"><span class="fc-count">${i+1} / ${s.cards.length}</span>
+      <div class="dots">${s.cards.map((_, j) => { const k = S.marks[cid(s,j)] || ''; return `<button class="dot ${k} ${j===i?'cur':''} ${S.seen[cid(s,j)]?'seen':''}" data-act="goto" data-i="${j}" aria-label="第 ${j+1} 張">${j+1}</button>`; }).join('')}</div></div>
+    <button class="fc" id="fc" data-act="flip" aria-label="翻面">
+      <div class="fc-in">
+        <div class="fc-face"><span class="side">觀念 · 正面 ${c.hot ? '<span class="hot">考點</span>' : ''}</span><div class="q">${esc(c.f)}</div><span class="hint">點一下翻面</span></div>
+        <div class="fc-face back"><span class="side">重點整理 · 背面</span><div class="a">${esc(c.b)}</div><span class="hint">點一下翻回</span></div>
+      </div>
+    </button>
+    <div class="fc-nav"><div class="marks">${markButtons(id)}</div>
+      <div class="acts"><button class="btn" data-act="prev" ${i===0?'disabled':''}>← 上一張</button><button class="btn" data-act="next" ${i===s.cards.length-1?'disabled':''}>下一張 →</button>
+      <button class="btn ai" data-act="askcard" data-id="${id}">問 AI</button></div></div>
+  </div>`;
+}
+function renderExamples(pane, s){
+  pane.innerHTML = `<div class="items">${s.examples.map((x, i) => {
+    const id = xid(s,i), open = S.seen[id] && pane.dataset['o'+i] !== '0';
+    return `<div class="item"><div class="src"><span>${esc(x.src)}</span>${S.seen[id] ? '<span class="st ok">已看</span>' : ''}</div>
+      <div class="q">${esc(x.q)}</div>${x.fig ? `<div class="fig">${FIGS[x.fig]()}</div>` : ''}
+      ${open ? `<div class="ans"><span class="lab">答案</span><div>${esc(x.a)}</div></div><div class="exp"><b>解說：</b>${esc(x.e)}</div>` : ''}
+      <div class="acts">${open ? `<button class="btn" data-act="hideans" data-i="${i}">收起答案</button>` : `<button class="btn pri" data-act="showans" data-id="${id}" data-i="${i}">顯示答案與解說</button>`}
+      <button class="btn ai" data-act="askex" data-id="${id}">進階詢問 AI</button></div></div>`;
+  }).join('')}</div>`;
+}
+
+// 小測驗（資料夾題庫、熟練度出題、AI 出題共用）
+function renderQuiz(pane, qs, opt){
+  pane._qs = qs; pane._opt = opt;
+  if(!opt.persist) pane._ans = pane._ans || {};
+  const ans = id => opt.persist ? S.quiz[id] : pane._ans[id];
+  const done = qs.filter(q => ans(q.id)), right = done.filter(q => ans(q.id).ok).length;
+  pane.innerHTML = `<div class="items">
+    <div class="score"><span>答對 <b>${right}</b> / ${qs.length}</span><span>已作答 ${done.length} 題</span>${done.length ? `<button class="btn" data-act="qreset">重新作答</button>` : ''}</div>
+    ${qs.map((q, n) => { const a = ans(q.id); return `<div class="item" data-qid="${esc(q.id)}">
+      <div class="src"><span>第 ${n+1} 題</span>${q.from ? `<span>${esc(q.from)}</span>` : ''}</div>
+      <div class="q">${esc(q.q)}</div>
+      <div class="opts">${q.o.map((o, j) => { let cls = ''; if(a){ if(j === q.a) cls = 'right'; else if(j === a.pick) cls = 'wrong'; } return `<button class="opt ${cls}" ${a?'disabled':''} data-act="pick" data-q="${n}" data-j="${j}"><span class="l">${LETTER[j]}</span><span>${esc(o)}</span></button>`; }).join('')}</div>
+      ${a ? `<div class="verdict ${a.ok?'ok':'no'}">${a.ok ? '✓ 答對了' : '✗ 答錯了，正確答案是 ' + LETTER[q.a]}</div><div class="exp"><b>解說：</b>${esc(q.e)}</div>
+      <div class="acts"><button class="btn ai" data-act="askq" data-q="${n}">我還是不懂，問 AI</button></div>` : ''}
+    </div>`; }).join('')}
+  </div>`;
+}
+
+// ===== 熟練度資料夾 =====
+function cardsWithMark(f, k){
+  const out = [];
+  f.subs.forEach(s => s.cards.forEach((c, i) => { if(S.marks[cid(s,i)] === k) out.push({c, id: cid(s,i), s}); }));
+  return out;
+}
+function masteryHTML(f, v){
+  v.tab = v.tab || 'cards';
+  const list = cardsWithMark(f, v.k);
+  return `<div class="subhead"><div><div class="k">${f.id} · ${esc(f.name)} · 熟練度紀錄</div><h1>${LBL[v.k]} <span class="stars">${'★'.repeat(STAR[v.k])}</span></h1></div>
+    <div class="acts">${['m','r','w'].map(k => `<button class="btn ${k===v.k?'pri':''}" data-act="mswitch" data-k="${k}">${LBL[k]} ${cardsWithMark(f,k).length}</button>`).join('')}</div></div>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="${v.tab==='cards'}" data-act="tab" data-t="cards">抽認卡 <span class="c">${list.length}</span></button>
+    <button class="tab" role="tab" aria-selected="${v.tab==='ask'}" data-act="tab" data-t="ask">自由提問</button>
+    <button class="tab" role="tab" aria-selected="${v.tab==='gen'}" data-act="tab" data-t="gen">出題</button>
+  </div><div id="pane"></div>`;
+}
+function masteryContext(f, k){
+  const list = cardsWithMark(f, k);
+  return `主題：${f.name}（學生標記為「${LBL[k]}」的抽認卡）\n` + list.map(x => `- [${x.s.title}] ${x.c.f} → ${x.c.b}`).join('\n');
+}
+function afterMastery(f, v){
+  const pane = $('#pane'), list = cardsWithMark(f, v.k);
+  if(!list.length && v.tab !== 'ask'){ pane.innerHTML = `<div class="empty">這裡還沒有標記為「${LBL[v.k]}」的抽認卡。<br>到各資料夾的「① 觀念抽認卡」翻卡後按下「${LBL[v.k]}」，卡片就會出現在這裡。</div>`; return; }
+  if(v.tab === 'cards'){
+    pane.innerHTML = `<div class="mgrid">${list.map(x => `<div class="mcard"><span class="from">${x.s.id} · ${esc(x.s.title)}</span>
+      <div class="q">${esc(x.c.f)} ${x.c.hot ? '<span class="hot">考點</span>' : ''}</div>
+      ${v.open && v.open[x.id] ? `<div class="a">${esc(x.c.b)}</div>` : ''}
+      <div class="acts"><button class="btn" data-act="mopen" data-id="${x.id}">${v.open && v.open[x.id] ? '隱藏答案' : '看答案'}</button><button class="btn ai" data-act="askcard" data-id="${x.id}">問 AI</button></div>
+      <div class="marks">${markButtons(x.id)}</div></div>`).join('')}</div>`;
+  } else if(v.tab === 'ask'){
+    pane.innerHTML = `<div class="chat inlinechat" id="mchat"></div>`;
+    mountChat($('#mchat'), {key: 'm-'+f.id+'-'+v.k, context: list.length ? masteryContext(f, v.k) : `主題：${f.name}（目前沒有標記為「${LBL[v.k]}」的卡片，請就整個主題回答）\n` + f.subs.map(s => '- ' + s.title).join('\n'),
+      chips: ['幫我把這些觀念整理成一張對照表', '這些觀念考試最常怎麼考？', '用口訣幫我記', '我最容易混淆的是哪幾個？']});
+  } else {
+    pane.innerHTML = `<div class="acts" style="margin-bottom:12px"><button class="btn pri" data-act="genbank">從題庫出 5 題</button><button class="btn ai" data-act="genai">AI 出 4 題新題</button></div><div id="genout"><div class="empty">選擇出題方式。「從題庫出題」從這些卡片所屬資料夾的小測驗抽題；「AI 出新題」依據你標記的卡片即時生成新題目。</div></div>`;
+  }
+}
+function genFromBank(f, k){
+  const subs = [...new Set(cardsWithMark(f, k).map(x => x.s.id))].map(id => SUB[id]);
+  const pool = []; subs.forEach(s => s.quiz.forEach((q, i) => pool.push({...q, id: 'g-'+qid(s,i)+'-'+Date.now(), from: s.title, ctx: s.title})));
+  for(let i = pool.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+  const out = $('#genout'); out._ans = {};
+  renderQuiz(out, pool.slice(0, 5), {persist:false});
+}
+async function genFromAI(f, k){
+  const out = $('#genout');
+  const sample = await getSample();
+  if(!sample){ out.innerHTML = `<div class="empty">${AI_OFF}</div>`; return; }
+  out.innerHTML = '<div class="empty">AI 正在出題…（約 10～40 秒）</div>';
+  const prompt = `你是工程圖學（BME 1106）助教。根據下列學生需要${LBL[k]}的觀念，出 4 題繁體中文四選一選擇題，強調考試重點、能分辨易混淆觀念，不要與觀念原句一模一樣。\n只回覆 JSON 陣列，格式：[{"q":"題目","o":["選項1","選項2","選項3","選項4"],"a":正確選項索引0-3,"e":"解說(1-2句)"}]\n\n${masteryContext(f, k)}`;
+  try{
+    const arr = await sample.json(prompt, {cache:false});
+    const qs = (Array.isArray(arr) ? arr : []).filter(q => q && q.q && Array.isArray(q.o) && q.o.length >= 2 && Number.isInteger(Number(q.a))).slice(0, 6)
+      .map((q, i) => ({q: String(q.q), o: q.o.map(String).slice(0, 4), a: Math.min(Number(q.a), 3), e: String(q.e || ''), id: 'ai-'+Date.now()+'-'+i, from: 'AI 新題', ctx: f.name}));
+    if(!qs.length) throw {code:'invalid_json'};
+    out._ans = {}; renderQuiz(out, qs, {persist:false});
+  }catch(e){ out.innerHTML = `<div class="empty">${errText(e)}<br><button class="btn" data-act="genai" style="margin-top:10px">再試一次</button></div>`; }
+}
+
+// ===== AI 對話 =====
+const AI_OFF = 'AI 問答需要在 Claude 中開啟此頁面才能使用。其他功能（抽認卡、測驗、畫布）都可正常使用。';
+let samplePromise = null;
+function getSample(){ if(!samplePromise) samplePromise = (window.claude && window.claude.use) ? claude.use('sample').catch(() => null) : Promise.resolve(null); return samplePromise; }
+function errText(e){
+  const c = e && e.code;
+  if(c === 'not_granted' || c === 'sampling_disabled' || c === 'not_declared' || c === 'capability_disabled') return 'AI 問答目前無法使用（未授權或已停用）。';
+  if(c === 'rate_limited') return '使用太頻繁了，請稍候再試。';
+  if(c === 'session_expired') return '登入已過期，請重新登入 Claude。';
+  if(c === 'invalid_json') return 'AI 回傳的格式無法解析。';
+  if(c === 'refused') return 'AI 無法回答這個問題，換個問法試試。';
+  return '連線中斷，請再試一次。';
+}
+function md(t){
+  const lines = esc(t).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').split('\n');
+  let html = '', inList = false;
+  lines.forEach(l => {
+    const m = l.match(/^\s*(?:[-*•]|\d+[.)])\s+(.*)/);
+    if(m){ if(!inList){ html += '<ul>'; inList = true; } html += '<li>' + m[1] + '</li>'; }
+    else { if(inList){ html += '</ul>'; inList = false; } if(l.trim()) html += '<p>' + l.replace(/^#+\s*/, '') + '</p>'; }
+  });
+  if(inList) html += '</ul>';
+  return html;
+}
+const CHATS = {};
+function rulesFor(context){
+  return `你是「工程圖學與電腦製圖（BME 1106，台大盧彥文老師）」的考前助教，學生正在準備 10/19 的 Exam 1。\n請用繁體中文回答，條理清楚，必要時條列，重要名詞可附英文。以下方講義內容為準；超出講義範圍時說明並以 CNS 工程製圖常識補充。回答精簡（約 150～300 字），除非學生要求更詳細。不要使用 Markdown 標題或表格語法以外的複雜格式。\n\n【學生目前在看的內容】\n${context}`;
+}
+function mountChat(el, cfg){
+  const st = CHATS[cfg.key] = CHATS[cfg.key] || {turns: [], ctl: null};
+  el.innerHTML = `<details class="ctx"><summary>AI 參考的內容</summary><pre>${esc(cfg.context)}</pre></details>
+    <div class="log" aria-live="polite"></div>
+    <div class="chips">${(cfg.chips || ['用更簡單的方式解釋','舉一個例子','考試會怎麼考？','常見的錯誤是什麼？']).map(c => `<button class="chip" type="button">${esc(c)}</button>`).join('')}</div>
+    <form><textarea rows="1" placeholder="輸入你的問題…" aria-label="輸入問題" id="ta-${esc(cfg.key)}"></textarea><button class="btn pri" type="submit">送出</button></form>`;
+  const log = $('.log', el), ta = $('textarea', el), form = $('form', el), sendBtn = $('button[type=submit]', el);
+  const draw = () => {
+    log.innerHTML = st.turns.length ? st.turns.map(t => `<div class="msg ${t.role === 'user' ? 'u' : t.err ? 'sys' : 'a'}">${t.role === 'user' ? esc(t.content) : t.err ? esc(t.content) : md(t.content)}</div>`).join('')
+      : `<div class="msg sys">有什麼不懂的都可以問，例如「為什麼要這樣畫？」或「幫我出一題類似的」。</div>`;
+    log.scrollTop = log.scrollHeight;
+  };
+  draw();
+  const send = async (text) => {
+    text = text.trim(); if(!text) return;
+    if(st.ctl){ st.ctl.abort(); return; }
+    st.turns.push({role:'user', content:text}); ta.value = ''; draw();
+    const sample = await getSample();
+    if(!sample){ st.turns.push({role:'assistant', content: AI_OFF, err:1}); draw(); return; }
+    const bubble = document.createElement('div'); bubble.className = 'msg a'; bubble.textContent = '思考中…'; log.appendChild(bubble); log.scrollTop = log.scrollHeight;
+    st.ctl = new AbortController(); sendBtn.textContent = '停止';
+    const hist = st.turns.filter(t => !t.err).slice(-10);
+    try{
+      const {text: ans} = await sample([{role:'user', content: rulesFor(cfg.context)}, ...hist], {cache:false, signal: st.ctl.signal, onText: ({text}) => { bubble.innerHTML = md(text); log.scrollTop = log.scrollHeight; }});
+      st.turns.push({role:'assistant', content: ans});
+    }catch(e){
+      if(e && e.text) st.turns.push({role:'assistant', content: e.text});
+      if(!e || e.code !== 'cancelled') st.turns.push({role:'assistant', content: errText(e), err:1});
+    }
+    st.ctl = null; sendBtn.textContent = '送出'; draw();
+  };
+  form.addEventListener('submit', ev => { ev.preventDefault(); send(st.ctl ? ' ' : ta.value); });
+  ta.addEventListener('keydown', ev => { if(ev.key === 'Enter' && !ev.shiftKey && !ev.isComposing){ ev.preventDefault(); send(ta.value); } });
+  $('.chips', el).addEventListener('click', ev => { const b = ev.target.closest('.chip'); if(b) send(b.textContent); });
+  if(cfg.seed && !st.turns.length) ta.value = cfg.seed;
+}
+function openDrawer(title, cfg){
+  closeDrawer();
+  const scrim = document.createElement('div'); scrim.className = 'scrim'; scrim.id = 'scrim'; scrim.onclick = closeDrawer;
+  const d = document.createElement('aside'); d.className = 'drawer'; d.id = 'drawer'; d.setAttribute('aria-label', 'AI 助教');
+  d.innerHTML = `<div class="dh"><b>AI 助教 · ${esc(title)}</b><button class="btn" data-x>關閉</button></div><div class="chat"></div>`;
+  document.body.append(scrim, d);
+  $('[data-x]', d).onclick = closeDrawer;
+  mountChat($('.chat', d), cfg);
+  setTimeout(() => { const t = $('textarea', d); if(t) t.focus(); }, 50);
+}
+function closeDrawer(){ const a = $('#drawer'), b = $('#scrim'); if(a) a.remove(); if(b) b.remove(); }
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeDrawer(); });
+function findCard(id){ const [sid, n] = id.split('-c'); const s = SUB[sid]; return {s, c: s.cards[+n]}; }
+
+// ===== 事件 =====
+let toastT;
+function toast(msg){ let t = $('#toast'); if(!t){ t = document.createElement('div'); t.id = 'toast'; t.className = 'toast'; t.setAttribute('role','status'); document.body.appendChild(t); } t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => t.hidden = true, 1600); }
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('[data-act]'); if(!b || b.closest('.board')) return;
+  const a = b.dataset.act, v = nav[nav.length - 1];
+  if(a === 'home') toHome();
+  else if(a === 'back') back();
+  else if(a === 'crumb'){ nav.length = +b.dataset.i + 1; render(); }
+  else if(a === 'kw') go({s:'kw'});
+  else if(a === 'folder') go({s:'folder', f:b.dataset.f});
+  else if(a === 'sub') go({s:'sub', id:b.dataset.id});
+  else if(a === 'mastery') go({s:'mastery', f:b.dataset.f, k:b.dataset.k});
+  else if(a === 'mswitch'){ v.k = b.dataset.k; v.open = {}; render(); }
+  else if(a === 'tab'){ v.tab = b.dataset.t; render(); }
+  else if(a === 'done'){ const s = SUB[v.id]; if(S.done[s.id]) delete S.done[s.id]; else S.done[s.id] = 1; touch(); render(); }
+  else if(a === 'flip'){ const s = SUB[v.id]; b.classList.toggle('flip'); const id = cid(s, v.ci); if(!S.seen[id]){ S.seen[id] = 1; touch(); const d = document.querySelectorAll('.dot')[v.ci]; if(d) d.classList.add('seen'); } }
+  else if(a === 'prev'){ v.ci = Math.max(0, v.ci - 1); afterSub(SUB[v.id], v); }
+  else if(a === 'next'){ v.ci = Math.min(SUB[v.id].cards.length - 1, v.ci + 1); afterSub(SUB[v.id], v); }
+  else if(a === 'goto'){ v.ci = +b.dataset.i; afterSub(SUB[v.id], v); }
+  else if(a === 'mark'){
+    const id = b.dataset.id, k = b.dataset.k;
+    if(S.marks[id] === k) delete S.marks[id]; else { S.marks[id] = k; S.seen[id] = 1; }
+    touch(); toast(S.marks[id] ? `已標記：${LBL[k]}（${'★'.repeat(STAR[k])}）` : '已取消標記');
+    if(v.s === 'sub'){ const flipped = $('#fc') && $('#fc').classList.contains('flip'); render(); if(flipped && $('#fc')) $('#fc').classList.add('flip'); }
+    else render();
+  }
+  else if(a === 'showans'){ S.seen[b.dataset.id] = 1; touch(); const p = $('#pane'); delete p.dataset['o'+b.dataset.i]; renderExamples(p, SUB[v.id]); }
+  else if(a === 'hideans'){ const p = $('#pane'); p.dataset['o'+b.dataset.i] = '0'; renderExamples(p, SUB[v.id]); }
+  else if(a === 'pick'){
+    const pane = b.closest('#pane, #genout'), q = pane._qs[+b.dataset.q], j = +b.dataset.j, rec = {pick:j, ok: j === q.a};
+    if(pane._opt.persist){ S.quiz[q.id] = rec; touch(); } else pane._ans[q.id] = rec;
+    const y = window.scrollY; renderQuiz(pane, pane._qs, pane._opt); window.scrollTo(0, y);
+    if(pane._opt.persist){ const t = $('.tab[data-t=quiz] .c'); if(t) t.textContent = pane._qs.filter(x => S.quiz[x.id]).length + '/' + pane._qs.length; }
+  }
+  else if(a === 'qreset'){
+    const pane = b.closest('#pane, #genout');
+    if(pane._opt.persist) pane._qs.forEach(q => delete S.quiz[q.id]), touch(); else pane._ans = {};
+    renderQuiz(pane, pane._qs, pane._opt);
+  }
+  else if(a === 'askcard'){ const {s, c} = findCard(b.dataset.id); openDrawer(s.title, {key:'c-'+b.dataset.id, context:`資料夾：${s.title}\n抽認卡正面：${c.f}\n背面：${c.b}`}); }
+  else if(a === 'askex'){ const s = SUB[v.id], i = +b.dataset.id.split('-x')[1], x = s.examples[i];
+    openDrawer(s.title, {key:'x-'+b.dataset.id, context:`資料夾：${s.title}\n講義題目（${x.src}）：${x.q}\n答案：${x.a}\n解說：${x.e}`, chips:['我不懂解說的這一步','再出一題類似的','這題常見的陷阱是什麼？','畫圖步驟可以再講一次嗎？']}); }
+  else if(a === 'askq'){ const pane = b.closest('#pane, #genout'), q = pane._qs[+b.dataset.q], my = (pane._opt.persist ? S.quiz[q.id] : pane._ans[q.id]);
+    openDrawer(q.ctx || '小測驗', {key:'q-'+q.id, context:`小測驗題目：${q.q}\n選項：${q.o.map((o,j)=>LETTER[j]+'. '+o).join('　')}\n正確答案：${LETTER[q.a]}\n學生選了：${my ? LETTER[my.pick] : '未作答'}\n解說：${q.e}`, chips:['為什麼我選的不對？','其他選項錯在哪？','再出一題類似的','幫我用口訣記']}); }
+  else if(a === 'mopen'){ v.open = v.open || {}; v.open[b.dataset.id] = !v.open[b.dataset.id]; afterMastery(FOLDER[v.f], v); }
+  else if(a === 'genbank') genFromBank(FOLDER[v.f], v.k);
+  else if(a === 'genai') genFromAI(FOLDER[v.f], v.k);
+});
+
+// ===== 示意圖 =====
+const FIGS = {
+  cool(){
+    // [名稱, ᵛ 高度, ʰ 位置]；正值＝GL 上方
+    const pts = [['a',1,-1],['b',1,.45],['c',-1,1],['d',-.5,-1],['e',1,0],['f',-.9,0],['g',0,-1],['i',0,1],['j',0,0]];
+    const W = 560, H = 230, gy = 115, k = 80;
+    let s = `<svg viewBox="0 0 ${W} ${H}" width="${W}" role="img" aria-label="COOL Time 點的投影圖"><line x1="20" y1="${gy}" x2="${W-10}" y2="${gy}" stroke="var(--g-B)" stroke-width="1.5"/><text x="22" y="${gy-6}" font-size="12" fill="var(--ink)">GL</text>`;
+    pts.forEach(([nm, v, h], n) => {
+      const x = 70 + n * 55, vy = gy - v * k, hy = gy - h * k, ys = [vy, hy, gy];
+      s += `<line x1="${x}" y1="${Math.min(...ys)}" x2="${x}" y2="${Math.max(...ys)}" stroke="var(--blue)" stroke-width="1.2"/>`;
+      const lab = (y, sup, below) => `<circle cx="${x}" cy="${y}" r="3" fill="var(--ink)"/><text x="${x+5}" y="${y + (below ? 16 : -5)}" font-size="14" fill="var(--red)">${nm}<tspan font-size="10" dy="-6">${sup}</tspan></text>`;
+      // 標籤放在遠離另一點的一側
+      const vBelow = v === h ? false : (vy > hy);
+      const hBelow = v === h ? true : (hy > vy);
+      s += lab(vy, 'v', vBelow) + lab(hy, 'h', hBelow);
+    });
+    return s + '</svg>';
+  },
+  lines(){
+    const rows = [['A 粗實線','可見輪廓線','',3.2],['B 細實線','尺度線、剖面線','',1],['E 虛線','隱藏線','9 3',2],['F 細鏈線','中心線、假想線','40 4 2 4',1],['G 粗鏈線','特殊處理範圍','40 4 2 4',3.2]];
+    let s = `<svg viewBox="0 0 520 ${rows.length*34+40}" width="520" role="img" aria-label="線條種類示意">`;
+    rows.forEach((r, i) => { const y = 24 + i * 34; s += `<text x="8" y="${y+4}" font-size="13" fill="var(--ink)" font-weight="700">${r[0]}</text><line x1="110" y1="${y}" x2="330" y2="${y}" stroke="var(--ink)" stroke-width="${r[3]}" ${r[2] ? `stroke-dasharray="${r[2]}"` : ''}/><text x="345" y="${y+4}" font-size="12.5" fill="var(--ink2)">${r[1]}</text>`; });
+    const y = 24 + rows.length * 34;
+    s += `<text x="8" y="${y+4}" font-size="13" fill="var(--ink)" font-weight="700">H 割面線</text><line x1="110" y1="${y}" x2="128" y2="${y}" stroke="var(--ink)" stroke-width="3.2"/><line x1="134" y1="${y}" x2="306" y2="${y}" stroke="var(--ink)" stroke-width="1" stroke-dasharray="40 4 2 4"/><line x1="312" y1="${y}" x2="330" y2="${y}" stroke="var(--ink)" stroke-width="3.2"/><text x="345" y="${y+4}" font-size="12.5" fill="var(--ink2)">兩端粗、中間細</text>`;
+    return s + '</svg>';
+  },
+  angle(){
+    const sym = (x, first) => {
+      const cone = (cx) => `<path d="M${cx-30} 32 L${cx+30} 20 L${cx+30} 60 L${cx-30} 48 Z" fill="none" stroke="var(--ink)" stroke-width="2"/><line x1="${cx-38}" y1="40" x2="${cx+38}" y2="40" stroke="var(--ink2)" stroke-dasharray="10 3 2 3"/>`;
+      const circ = (cx) => `<circle cx="${cx}" cy="40" r="20" fill="none" stroke="var(--ink)" stroke-width="2"/><circle cx="${cx}" cy="40" r="8" fill="none" stroke="var(--ink)" stroke-width="2"/><line x1="${cx-28}" y1="40" x2="${cx+28}" y2="40" stroke="var(--ink2)" stroke-dasharray="10 3 2 3"/><line x1="${cx}" y1="12" x2="${cx}" y2="68" stroke="var(--ink2)" stroke-dasharray="10 3 2 3"/>`;
+      return (first ? cone(x) + circ(x + 90) : circ(x) + cone(x + 90)) + `<text x="${x+45}" y="92" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">${first ? '第一角法' : '第三角法'}</text>`;
+    };
+    return `<svg viewBox="0 0 470 104" width="470" role="img" aria-label="第一角法與第三角法符號">${sym(50, true)}${sym(300, false)}</svg>`;
+  }
+};
+
+// ===== 關鍵字畫布 =====
+const PEN = {mode:'move', color:'#1B2227', width:3};
+const COLORS = [['黑','#1B2227','#E8ECEE'],['藍','#1F58A6','#78A9EA'],['紅','#C2362B','#EE7B70'],['綠','#2C7A4B','#6CC38E']];
+let sel = null, ro = null, clearArm = false;
+const dark = () => { const t = document.documentElement.dataset.theme; return t === 'dark' || (t !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches); };
+const penColor = c => { const r = COLORS.find(x => x[1] === c); return r ? (dark() ? r[2] : r[1]) : c; };
+function kwHTML(){
+  const onBoard = new Set(BOARD.chips.map(c => c.k));
+  return `<div class="kw">
+    <div class="tools" role="toolbar" aria-label="畫布工具">
+      <button class="tool" data-tool="move" aria-pressed="${PEN.mode==='move'}">✥ 移動</button>
+      <button class="tool" data-tool="pen" aria-pressed="${PEN.mode==='pen'}">✎ 畫筆</button>
+      <button class="tool" data-tool="erase" aria-pressed="${PEN.mode==='erase'}">⌫ 橡皮擦</button>
+      <span class="sep"></span>
+      ${COLORS.map(c => `<button class="sw" data-color="${c[1]}" aria-label="${c[0]}色" aria-pressed="${PEN.color===c[1]}" style="background:${c[1]}"></button>`).join('')}
+      <span class="sep"></span>
+      ${[2,4,8].map(w => `<button class="wd" data-width="${w}" aria-label="線寬 ${w}" aria-pressed="${PEN.width===w}"><i style="height:${Math.max(2,w/1.5)}px"></i></button>`).join('')}
+      <span class="sep"></span>
+      <button class="tool" data-tool="undo">↶ 復原</button>
+      <button class="tool" data-tool="clear">清除畫布</button>
+    </div>
+    <div class="board ${PEN.mode!=='move'?'draw':''}" id="board">
+      <canvas id="cv"></canvas>
+      ${BOARD.chips.length || BOARD.strokes.length ? '' : '<div class="hintb">點選下方的關鍵字，它會出現在這裡。<br>拖曳移動、拉右下角藍點縮放；切換「畫筆」可用四色手繪標記。</div>'}
+    </div>
+    <div class="selbar" id="selbar"></div>
+    <div class="kwlist" id="kwlist">${KEYWORDS.map(g => `<section class="kwg" style="--gc:var(--g-${g.c})"><h3><i></i>${esc(g.g)} <small>${g.items.length}</small></h3>
+      <div class="kwgrid">${g.items.map(([k, d]) => `<button class="kwb ${onBoard.has(k)?'on':''}" data-kw="${esc(k)}" data-g="${g.c}" title="${esc(d)}">${esc(k)}</button>`).join('')}</div></section>`).join('')}</div>
+  </div>`;
+}
+function setupBoard(){
+  const board = $('#board'), cv = $('#cv'), ctx = cv.getContext('2d');
+  BOARD.chips.forEach(c => board.appendChild(chipEl(c)));
+  const size = () => { const r = board.getBoundingClientRect(), dpr = window.devicePixelRatio || 1; cv.width = r.width * dpr; cv.height = r.height * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); layoutChips(); redraw(); };
+  ro = new ResizeObserver(size); ro.observe(board); size();
+  drawSel();
+  // 工具列
+  $('.tools').addEventListener('click', e => {
+    const t = e.target.closest('button'); if(!t) return;
+    if(t.dataset.tool === 'undo'){ if(BOARD.strokes.length){ BOARD.strokes.pop(); touchBoard(); redraw(); } else toast('沒有可復原的筆畫'); return; }
+    if(t.dataset.tool === 'clear'){
+      if(!clearArm){ clearArm = true; t.textContent = '再按一次確認清除'; setTimeout(() => { clearArm = false; if(t.isConnected) t.textContent = '清除畫布'; }, 2500); return; }
+      clearArm = false; BOARD.chips = []; BOARD.strokes = []; sel = null; touchBoard(); render(); return;
+    }
+    if(t.dataset.tool) PEN.mode = t.dataset.tool;
+    if(t.dataset.color){ PEN.color = t.dataset.color; if(PEN.mode !== 'pen') PEN.mode = 'pen'; }
+    if(t.dataset.width){ PEN.width = +t.dataset.width; if(PEN.mode !== 'pen') PEN.mode = 'pen'; }
+    $('.tools').querySelectorAll('[data-tool=move],[data-tool=pen],[data-tool=erase]').forEach(b => b.setAttribute('aria-pressed', b.dataset.tool === PEN.mode));
+    $('.tools').querySelectorAll('[data-color]').forEach(b => b.setAttribute('aria-pressed', b.dataset.color === PEN.color));
+    $('.tools').querySelectorAll('[data-width]').forEach(b => b.setAttribute('aria-pressed', +b.dataset.width === PEN.width));
+    board.classList.toggle('draw', PEN.mode !== 'move');
+  });
+  // 關鍵字清單
+  $('#kwlist').addEventListener('click', e => {
+    const b = e.target.closest('.kwb'); if(!b) return;
+    const k = b.dataset.kw, g = KEYWORDS.find(x => x.c === b.dataset.g), d = g.items.find(x => x[0] === k)[1];
+    const n = BOARD.chips.length;
+    const c = {id: 'k' + Date.now().toString(36) + n, k, d, g: g.c, x: .5 + ((n * 37) % 50 - 25) / 100, y: .45 + ((n * 23) % 40 - 20) / 100, s: 1};
+    BOARD.chips.push(c); touchBoard();
+    const hint = $('.hintb', board); if(hint) hint.remove();
+    board.appendChild(chipEl(c)); layoutChips(); sel = c.id; markSel(); drawSel();
+    b.classList.add('on');
+    if(PEN.mode !== 'move') toast('已加入畫布；切換「移動」才能拖曳關鍵字');
+  });
+  // 畫筆
+  let cur = null;
+  const pt = e => { const r = board.getBoundingClientRect(); return [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height]; };
+  cv.addEventListener('pointerdown', e => {
+    if(PEN.mode === 'move') return;
+    cv.setPointerCapture(e.pointerId);
+    if(PEN.mode === 'pen'){ cur = {c: PEN.color, w: PEN.width, p: [pt(e)]}; BOARD.strokes.push(cur); }
+    else { cur = {erase: true}; eraseAt(pt(e)); }
+  });
+  cv.addEventListener('pointermove', e => {
+    if(!cur) return;
+    if(cur.erase){ eraseAt(pt(e)); return; }
+    const p = pt(e); cur.p.push([+p[0].toFixed(4), +p[1].toFixed(4)]); redraw();
+  });
+  const end = () => { if(cur){ cur = null; touchBoard(); redraw(); } };
+  cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end);
+  function eraseAt(p){
+    const r = board.getBoundingClientRect(), px = p[0] * r.width, py = p[1] * r.height;
+    const before = BOARD.strokes.length;
+    BOARD.strokes = BOARD.strokes.filter(s => !s.p.some((q, i) => { const a = s.p[i-1] || q; return segDist(px, py, a[0]*r.width, a[1]*r.height, q[0]*r.width, q[1]*r.height) < 10 + s.w; }));
+    if(BOARD.strokes.length !== before) redraw();
+  }
+  function redraw(){
+    const r = board.getBoundingClientRect(); ctx.clearRect(0, 0, r.width, r.height);
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    BOARD.strokes.forEach(s => { ctx.strokeStyle = penColor(s.c); ctx.lineWidth = s.w; ctx.beginPath(); s.p.forEach((q, i) => { const x = q[0]*r.width, y = q[1]*r.height; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }); if(s.p.length === 1){ const x = s.p[0][0]*r.width, y = s.p[0][1]*r.height; ctx.lineTo(x + .1, y); } ctx.stroke(); });
+  }
+  board._redraw = redraw;
+  board.addEventListener('pointerdown', e => { if(PEN.mode === 'move' && e.target === board){ sel = null; markSel(); drawSel(); } });
+  // 選取列
+  $('#selbar').addEventListener('click', e => {
+    const b = e.target.closest('button'); if(!b) return; const c = BOARD.chips.find(x => x.id === sel); if(!c) return;
+    if(b.dataset.z){ c.s = Math.max(.5, Math.min(4, +(c.s + (+b.dataset.z)).toFixed(2))); touchBoard(); layoutChips(); }
+    else if(b.dataset.del !== undefined){ BOARD.chips = BOARD.chips.filter(x => x.id !== c.id); const el = board.querySelector(`[data-id="${c.id}"]`); if(el) el.remove(); sel = null; touchBoard(); drawSel(); syncOn(); }
+    else if(b.dataset.ask !== undefined){ openDrawer('關鍵字：' + c.k, {key:'kw-' + c.k, context:`關鍵字：${c.k}\n簡述：${c.d}\n所屬主題：${KEYWORDS.find(g => g.c === c.g).g}\n畫布上其他關鍵字：${BOARD.chips.map(x => x.k).join('、')}`, chips:['詳細解釋這個關鍵字','它和畫布上其他關鍵字有什麼關係？','考試會怎麼考？','舉一個圖面上的例子']}); }
+  });
+}
+function segDist(px, py, ax, ay, bx, by){ const dx = bx - ax, dy = by - ay, L = dx*dx + dy*dy; let t = L ? ((px-ax)*dx + (py-ay)*dy) / L : 0; t = Math.max(0, Math.min(1, t)); const x = ax + t*dx, y = ay + t*dy; return Math.hypot(px - x, py - y); }
+function syncOn(){ const on = new Set(BOARD.chips.map(c => c.k)); document.querySelectorAll('.kwb').forEach(b => b.classList.toggle('on', on.has(b.dataset.kw))); }
+function teardownBoard(){ if(ro){ ro.disconnect(); ro = null; } }
+function chipEl(c){
+  const el = document.createElement('div'); el.className = 'kchip'; el.dataset.id = c.id; el.style.setProperty('--gc', `var(--g-${c.g})`);
+  el.innerHTML = `${esc(c.k)}<span class="hd" aria-label="縮放"></span>`;
+  el.addEventListener('pointerdown', e => {
+    if(PEN.mode !== 'move') return;
+    e.preventDefault(); e.stopPropagation(); el.setPointerCapture(e.pointerId);
+    sel = c.id; markSel(); drawSel();
+    const board = $('#board'), r = board.getBoundingClientRect();
+    const resize = e.target.classList.contains('hd');
+    const sx = e.clientX, sy = e.clientY, ox = c.x, oy = c.y, os = c.s;
+    const cx = r.left + c.x * r.width, cy = r.top + c.y * r.height, d0 = Math.hypot(sx - cx, sy - cy) || 1;
+    el.style.cursor = 'grabbing';
+    const mv = ev => {
+      if(resize){ c.s = Math.max(.5, Math.min(4, os * Math.hypot(ev.clientX - cx, ev.clientY - cy) / d0)); }
+      else { c.x = Math.max(.04, Math.min(.96, ox + (ev.clientX - sx) / r.width)); c.y = Math.max(.05, Math.min(.95, oy + (ev.clientY - sy) / r.height)); }
+      place(el, c, r);
+    };
+    const up = () => { el.removeEventListener('pointermove', mv); el.removeEventListener('pointerup', up); el.removeEventListener('pointercancel', up); el.style.cursor = ''; touchBoard(); };
+    el.addEventListener('pointermove', mv); el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up);
+  });
+  el.addEventListener('wheel', e => { if(PEN.mode !== 'move') return; e.preventDefault(); c.s = Math.max(.5, Math.min(4, c.s * (e.deltaY < 0 ? 1.08 : 1/1.08))); place(el, c); clearTimeout(el._wt); el._wt = setTimeout(touchBoard, 400); }, {passive:false});
+  return el;
+}
+function place(el, c, r){ r = r || $('#board').getBoundingClientRect(); el.style.transform = `translate(${c.x * r.width}px, ${c.y * r.height}px) translate(-50%, -50%) scale(${c.s})`; }
+function layoutChips(){ const b = $('#board'); if(!b) return; const r = b.getBoundingClientRect(); BOARD.chips.forEach(c => { const el = b.querySelector(`[data-id="${c.id}"]`); if(el) place(el, c, r); }); }
+function markSel(){ document.querySelectorAll('.kchip').forEach(el => el.classList.toggle('sel', el.dataset.id === sel)); }
+function drawSel(){
+  const bar = $('#selbar'); if(!bar) return; const c = BOARD.chips.find(x => x.id === sel);
+  bar.innerHTML = c ? `<span class="def"><b>${esc(c.k)}</b>${esc(c.d)}</span><button class="btn" data-z="-0.2" aria-label="縮小">－</button><button class="btn" data-z="0.2" aria-label="放大">＋</button><button class="btn ai" data-ask>問 AI</button><button class="btn" data-del>移除</button>`
+    : `<span class="def" style="color:var(--ink2)">${BOARD.chips.length ? '點選畫布上的關鍵字可查看說明、縮放、移除或問 AI。' : '畫布是空的：從下方清單點選關鍵字開始。'}</span>`;
+}
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { const b = $('#board'); if(b && b._redraw) b._redraw(); });
+
+// ===== 啟動 =====
+renderHeader(); render(); initSync(); getSample();
+</script>
+
+</body></html>
